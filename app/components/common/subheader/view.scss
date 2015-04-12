@@ -1,0 +1,21 @@
+.sub-header {
+  .navbar .navbar-collapse {
+    width: 1200px;
+
+    .navbar-header {
+      padding: 10px 0;
+      width: 300px;
+
+      .navbar-logo {
+        float: left;
+      }
+
+      .navbar-heading {
+        color: white;
+        font-size: 24px;
+        margin: 20px 8px 0;
+        padding-left: 130px;
+      }
+    }
+  }
+}

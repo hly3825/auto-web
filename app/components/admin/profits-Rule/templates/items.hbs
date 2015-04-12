@@ -1,0 +1,56 @@
+<div class="modal profitsRuleItem" data-comp-path="pokeball" data-id="{{ruleId}}">
+  <div class="modal-header">
+    <a href="#" class="close">×</a>
+    {{#equals type "add"}}
+      <h2>添加商品</h2>
+    {{/equals}}
+    {{#equals type "show"}}
+      <h2>已设置规则的商品</h2>
+    {{/equals}}
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          {{#equals type "add"}}
+            <th width="40"><input type="checkbox" value="产品ID" class="js-vendor-items"></th>
+          {{/equals}}
+          <th width="130">产品代码</th>
+          <th width="195">产品名称</th>
+          <th width="95">产品分类</th>
+          <th width="190">产品主图片</th>
+          <th width="90">销售价格</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data }}
+          <tr>
+            {{#equals ../type "add"}}
+              <td><input class="js-batch-checkbox" type="checkbox" value="{{id}}"{{#equals isSelected "Y"}} checked{{/equals}} ></td>
+            {{/equals}}
+            <td>{{itemCode}}</td>
+            <td>{{itemName}}</td>
+            <td>
+              {{#equals type "1"}}冰箱{{/equals}}
+              {{#equals type "2"}}洗衣机{{/equals}}
+              {{#equals type "3"}}空调{{/equals}}
+              {{#equals type "4"}}厨电{{/equals}}
+              {{#equals type "5"}}热水器{{/equals}}
+              {{#equals type "6"}}电视{{/equals}}
+              {{#equals type "7"}}冷柜{{/equals}}
+            </td>
+            <td><a class="js-link-click" href="{{mainImage}}">图片链接</a></td>
+            <td>{{formatPrice price }}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    {{#equals type "add"}}
+      <button class="btn btn-primary btn-medium js-vendoritems-add">添加</button>
+      &nbsp;
+    {{/equals}}
+    <button class="btn btn-info btn-medium close">返回</button>
+  </div>
+</div>

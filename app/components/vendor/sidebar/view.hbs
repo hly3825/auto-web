@@ -1,0 +1,39 @@
+{{#component "js-comp vendor-sidebar sidebar"}}
+  <ul class="sidebar-ul">
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;佣金管理</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item
+        {{#equals _PATH_ "vendor/profits"}}active{{/equals}}
+        {{#equals _PATH_ "vendor/orderprofitdetail"}}active{{/equals}}
+        "><div class="text-link"><a href="/vendor/profits" class="inner-item-a">佣金查询</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;商品管理</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item
+        {{#equals _PATH_ "vendor/items"}}active{{/equals}}
+        {{#equals _PATH_ "vendor/itemdetail"}}active{{/equals}}
+        "><div class="text-link"><a href="/vendor/items" class="inner-item-a">商品列表</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;订单管理</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item
+        {{#equals _PATH_ "vendor/orders"}}active{{/equals}}
+        {{#equals _PATH_ "vendor/orderdetail"}}active{{/equals}}
+        {{#equals _PATH_ "vendor/vendorprofits"}}active{{/equals}}
+        "><div class="text-link"><a href="/vendor/orders" class="inner-item-a">订单列表</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;个人资料</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item {{#equals _PATH_ "vendor/changepassword"}}active{{/equals}}"><div class="text-link"><a href="/vendor/changepassword" class="inner-item-a">修改个人密码</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item {{#equals _PATH_ "vendor/personinfo"}}active{{/equals}}"><div class="text-link"><a href="/vendor/personinfo" class="inner-item-a">查看个人信息</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+  </ul>
+{{/component}}

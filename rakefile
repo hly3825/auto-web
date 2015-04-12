@@ -1,0 +1,57 @@
+require 'rake/contrib/ftptools'
+
+desc "release paras in minutes"
+task :release do
+  exec "linner build && rsync -rv --progress public/* 690jh@10.135.13.112:~/project/assets/public"
+end
+
+desc "Release paras to test server"
+task :release_test do
+  system "linner b && rsync -rv --progress public/* admin@10.135.108.204:~/assets/paras"
+end
+
+desc "Build package"
+task :build do
+    Rake::Task['clean'].execute
+    system "linner build"
+end
+
+desc "Package and push paras to ftp"
+task :package => :build do
+    system 'zip paras.zip -r public'
+end
+
+desc "Upload to ftp"
+task :push_to_ftp do
+    Rake::FtpUploader.connect "/home/haieradmin/o2ofront", "10.135.16.186", "haieradmin", "Haier,123" do |ftp|
+        puts 'starting uploadding file paras.zip ...'
+        ftp.upload_files 'paras.zip'
+        puts 'uploaded file paras.zip !'
+    end
+end
+
+desc "Upload package to o2o test server"
+task :upload => [:build, :package] do
+  Rake::Task['push_to_ftp'].execute
+  Rake::Task['push_to_dmz_ftp'].execute
+  Rake::Task['clean'].execute
+end
+
+desc "Clean dir"
+task :clean do
+    system 'rm paras.zip'
+end
+
+desc "release paras/components.tar.gz in minutes!"
+task :publish do
+  exec "curl -X PUT -F file=@public/components.tar.gz http://registry.aixforce.com/api/packages/paras"
+end
+
+desc "Upload to DMZ ftp"
+task :push_to_dmz_ftp do
+    Rake::FtpUploader.connect "/home/vhaier/", "10.135.6.178", "vhaier", "kMwTLhk1" do |ftp|
+        puts 'starting uploadding file paras.zip to dmz...'
+        ftp.upload_files 'paras.zip'
+        puts 'uploaded file paras.zip to dmz!'
+    end
+end

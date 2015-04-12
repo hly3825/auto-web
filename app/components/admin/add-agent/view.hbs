@@ -1,0 +1,269 @@
+{{#component "js-comp admin-addagent"}}
+<p class="components-title"><strong class="tab-name">代理商信息注册</strong></p>
+<form class="form form-aligned js-add-agent" data-id="{{id}}" novalidate="true">
+  <fieldset>
+    <div class="control-group">
+      <hr>
+      <h4>登陆信息:</h4>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>登陆用户名:</label>
+      <input required name="userName" type="text" value="{{_DATA_.userName}}">
+      <span class="note-error">该用户名已经被注册</span>
+      <span class="note-error-empty">请输入登陆用户名</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for="">{{#if id}} {{else}}<span class="required">*</span>{{/if}}登陆密码:</label>
+      <input {{#if id}} {{else}}required{{/if}} name="encryptedPassword" type="text" pattern=".{6,16}">
+      <span class="note-error">请输入正确的密码(6-16位任意字符)</span>
+      <span class="note-error-empty">请输入登陆密码</span>
+    </div>
+    <div class="control-group">
+      <hr>
+      <h4>基本信息:</h4>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>企业性质:</label>
+      <select required name="nature" class="select select164">
+        <option value="" selected="">请选择</option>
+        <option {{#equals _DATA_.vendor.nature "1"}}selected{{/equals}}  value="1">国有</option>
+        <option {{#equals _DATA_.vendor.nature "2"}}selected{{/equals}}  value="2">集体</option>
+        <option {{#equals _DATA_.vendor.nature "3"}}selected{{/equals}}  value="3">民营</option>
+        <option {{#equals _DATA_.vendor.nature "4"}}selected{{/equals}}  value="4">私营</option>
+        <option {{#equals _DATA_.vendor.nature "5"}}selected{{/equals}}  value="5">合资</option>
+        <option {{#equals _DATA_.vendor.nature "6"}}selected{{/equals}}  value="6">外资</option>
+        <option {{#equals _DATA_.vendor.nature "7"}}selected{{/equals}}  value="7">其他</option>
+      </select>
+      <span class="note-error-empty">请选择企业性质</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>代理商名称:</label>
+      <input required name="vendorName" type="text" value="{{_DATA_.vendor.vendorName}}">
+      <span class="note-error-empty">请输入代理商名称</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>邮政编码:</label>
+      <input required name="zipCode" type="text" value="{{_DATA_.vendor.zipCode}}" pattern="^[0-9][0-9]{5}$">
+      <span class="note-error-empty">请输入邮政编码</span>
+      <span class="note-error">请输入正确的邮政编码</span>
+    </div>
+    <div class="control-group">
+      <label class="control-label"><span class="required">*</span>省市区：</label>
+      <select required name="provinceId" class="province-select select164" data-id="{{_DATA_.vendor.provinceId}}">
+        <option value="">请选择省份..</option>
+      </select>
+      <span  class="note-error-empty">请选择省份</span>
+      &nbsp;
+      <select required name="cityId" class="city-select select164" data-id="{{_DATA_.vendor.cityId}}">
+        <option value="">请选择市..</option>
+      </select>
+      <span class="note-error-empty">请选择市</span>
+      &nbsp;
+      <select required name="regionId" class="region-select select164" data-id="{{_DATA_.vendor.regionId}}">
+        <option value="">请选择区/县..</option>
+      </select>
+      <span class="note-error-empty">请选择区</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>街道地址:</label>
+      <input required name="stree" type="text" value="{{_DATA_.vendor.stree}}">
+      <span class="note-error-empty">请输入街道</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>电话:</label>
+      <input required name="phone" type="tel" value="{{_DATA_.vendor.phone}}">
+      <span class="note">例如:0872-12345678</span>
+      <span class="note-error">请输入正确的电话</span>
+      <span class="note-error-empty">请输入电话</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for="">传真:</label>
+      <input name="fax" type="text" value="{{_DATA_.vendor.fax}}">
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>邮箱:</label>
+      <input required name="email" type="email" value="{{_DATA_.vendor.email}}" pattern="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+      <span class="note-error">请输入正确的邮箱</span>
+      <span class="note-error-empty">请输入邮箱</span>
+    </div>
+    <div class="control-group">
+      <hr>
+      <h4>法人信息:</h4>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>法人名称:</label>
+      <input required name="legalPerson" type="text" value="{{_DATA_.vendor.legalPerson}}">
+      <span class="note-error-empty">请输入法人名称</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>法人手机号码:</label>
+      <input required name="legalMobile" type="text" pattern="^1[3-9]\d{9}$" value="{{_DATA_.vendor.legalMobile}}">
+      <span class="note-error">请输入正确的手机号码</span>
+      <span class="note-error-empty">请输入法人手机号码</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>法人身份证号:</label>
+      <input required name="corporateIdentityCode" type="text" pattern="(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)" value="{{_DATA_.vendorPaperwork.corporateIdentityCode}}">
+      <span class="note-error">请输入正确的身份证号</span>
+      <span class="note-error-empty">请输入法人身份证号</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>身份证正面图片</label>
+      <img class=" {{#if _DATA_.vendorPaperwork.corporateIdentity}} {{else}}icon-null{{/if}} img"  src="{{_DATA_.vendorPaperwork.corporateIdentity}}"/>
+      <input required type="hidden" name="corporateIdentity" class="info-input" value="{{_DATA_.vendorPaperwork.corporateIdentity}}">
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input type="file" name="file" single>
+      </div>
+      <span class="note-error-empty">请上传法人身份证正面图片</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>身份证背面图片</label>
+      <img class="{{#if _DATA_.vendorPaperwork.corporateIdentityB}} {{else}}icon-null{{/if}} img"  src="{{_DATA_.vendorPaperwork.corporateIdentityB}}"/>
+      <input required type="hidden" name="corporateIdentityB" class="info-input" value="{{_DATA_.vendorPaperwork.corporateIdentityB}}">
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input type="file" name="file" single>
+      </div>
+      <span class="note-error-empty">请上传法人身份证背面图片</span>
+    </div>
+    <div class="control-group">
+      <hr>
+      <h4>银行相关信息:</h4>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>税务登记号:</label>
+      <input required name="taxCode" type="text" value="{{_DATA_.vendor.taxCode}}">
+      <span class="note-error-empty">请输入税务登记号</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>银行名称:</label>
+      <input required name="bankName" type="text" value="{{_DATA_.vendor.bankName}}" list="bank-list">
+      <datalist id="bank-list">
+      </datalist>
+      <span class="note-error-empty">该银行不存在</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>银行账户:</label>
+      <input required name="bankAccountNum" type="text" value="{{_DATA_.vendor.bankAccountNum}}">
+      <span class="note-error-empty">请输入银行账户</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>银行卡持有人:</label>
+      <input required name="accountHolderName" type="text" value="{{_DATA_.vendor.accountHolderName}}">
+      <span class="note-error-empty">请输入银行卡持有人</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>银行码:</label>
+      <input required name="bankBranchCode" type="text" value="{{_DATA_.vendor.bankBranchCode}}" readOnly>
+      <span class="note-error-empty">未选中银行名称</span>
+    </div>
+    <div class="control-group">
+      <hr>
+      <h4>三证信息:</h4>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>组织机构代码</label>
+      <input required name="organizationCode" type="text" value="{{_DATA_.vendorPaperwork.organizationCode}}">
+      <span class="note-error-empty">请输入组织机构代码</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>组织机构有效期</label>
+      <input required name="organizationValidDate" type="date" value="{{formatDate _DATA_.vendorPaperwork.organizationValidDate "day"}}">
+      <span class="note-error-empty">请输入组织机构有效期</span>
+    </div>
+    <div class="control-group" name="">
+      <label for=""><span class="required">*</span>组织结构代码证</label>
+      <img class="{{#if _DATA_.vendorPaperwork.organization}} {{else}}icon-null{{/if}} img" src="{{_DATA_.vendorPaperwork.organization}}"/>
+      <input required type="hidden" name="organization" class="info-input" value="{{_DATA_.vendorPaperwork.organization}}">
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input type="file" name="file" single>
+      </div>
+      <span class="note-error-empty">请上传组织结构代码证</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>营业执照编号</label>
+      <input required type="text" name="businessLicenceCode" value="{{_DATA_.vendorPaperwork.businessLicenceCode}}">
+      <span class="note-error-empty">请输入营业执照编号</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>营业执照有效期</label>
+      <input required  name="businessLicenceValidDate" type="date" value="{{formatDate _DATA_.vendorPaperwork.businessLicenceValidDate "day"}}">
+      <span class="note-error-empty">请输入营业执照有效期</span>
+    </div>
+    <div class="control-group" name="">
+      <label for=""><span class="required">*</span>营业执照</label>
+      <img class="{{#if _DATA_.vendorPaperwork.businessLicence}} {{else}}icon-null{{/if}}  img" src="{{_DATA_.vendorPaperwork.businessLicence}}"/>
+      <input required type="hidden" name="businessLicence" class="info-input" value="{{_DATA_.vendorPaperwork.businessLicence}}">
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input type="file" name="file" single>
+      </div>
+      <span class="note-error-empty">请上传营业执照</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>税务登记证编号</label>
+      <input required name="taxCertificateCode" type="text" value="{{_DATA_.vendorPaperwork.taxCertificateCode}}">
+      <span class="note-error-empty">请输入税务登记证编号</span>
+    </div>
+    <div class="control-group control-group-2" name="" >
+      <label for=""><span class="required">*</span>税务登记证</label>
+      <img class="{{#if _DATA_.vendorPaperwork.taxCertificate}} {{else}}icon-null{{/if}} img" src="{{_DATA_.vendorPaperwork.taxCertificate}}"/>
+      <input required type="hidden" name="taxCertificate" class="info-input" value="{{_DATA_.vendorPaperwork.taxCertificate}}">
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input type="file" name="file" single>
+      </div>
+      <span class="note-error-empty">请上税务登记证</span>
+    </div>
+    <div class="control-group control-group-2" name="" >
+      <label for=""><span class="required">*</span>开户许可证</label>
+      <img class="{{#if _DATA_.vendorPaperwork.accountPermit}} {{else}}icon-null{{/if}} img" src="{{_DATA_.vendorPaperwork.accountPermit}}"/>
+      <input required type="hidden" name="accountPermit" class="info-input" value="{{_DATA_.vendorPaperwork.accountPermit}}">
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input type="file" name="file" single>
+      </div>
+      <span class="note-error-empty">请上传开户许可证</span>
+    </div>
+    <div class="control-group control-group-2" name="">
+      <label for=""><span class="required">*</span>合同图片1</label>
+      <img class="{{#if _DATA_.vendorPaperwork.contractImage1}} {{else}}icon-null{{/if}} img" src="{{_DATA_.vendorPaperwork.contractImage1}}"/>
+      <input required type="hidden" name="contractImage1" class="info-input" value="{{_DATA_.vendorPaperwork.contractImage1}}">
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input type="file" name="file" single>
+      </div>
+      <span class="note-error-empty">请上传合同图片1</span>
+    </div>
+    <div class="control-group control-group-2" name="">
+      <label for=""><span class="required">*</span>合同图片2</label>
+      <img class="{{#if _DATA_.vendorPaperwork.contractImage2}} {{else}}icon-null{{/if}} img" src="{{_DATA_.vendorPaperwork.contractImage2}}"/>
+      <input required type="hidden" name="contractImage2" class="info-input" value="{{_DATA_.vendorPaperwork.contractImage2}}">
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input type="file" name="file" single>
+      </div>
+      <span class="note-error-empty">请上传合同图片2</span>
+    </div>
+    <div class="control-group">
+      <hr>
+    </div>
+    <div class="control-group control-group-2">
+      <label for="cb">
+      </label>
+      <input required id="cb" name="cb" type="checkbox">请同意代理商协议
+      <span class="note-error-empty">请同意代理商协议</span>
+      <span class="note-error">请选择同意代理商协议</span>
+    </div>
+    <div class="align-center">
+      <input type="submit" class="btn btn-primary" value="保存">
+      &nbsp;
+      <input type="button" class="btn btn-primary js-submit-save" value="提交">
+      &nbsp;
+      <a href="/admin/agents" class="btn btn-primary">返回</a>
+    </div>
+  </fieldset>
+</form>
+{{/component}}

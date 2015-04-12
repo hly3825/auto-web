@@ -1,0 +1,306 @@
+app: auto-web
+
+services:
+  "queryChosenItems":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:queryChosenItems"
+
+  "queryItems":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:queryItems"
+
+  "findItemById":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:findById"
+
+  "findItemById":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:findById"
+
+  "createItem":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:create"
+
+  "updateItem":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:update"
+
+  "dealShelves":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:dealShelves"
+
+  "importItems":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:importItems"
+
+  "findVendorItem":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:findVendorItem"
+
+  "queryLeader":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserService:queryLeader"
+
+  "queryBuzv":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserService:queryBuzv"
+
+  "queryPaysInfoNow":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionPaymentInfoService:queryVendorPayment"
+
+  "queryPaysInfoHistory":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionPaymentInfoService:queryPaymentInfoDetail"
+
+  "queryPaysInfo":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionPaymentInfoService:queryPayment"
+
+  "payApply":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionPaymentInfoService:createPayment"
+
+  "payCheck":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionPaymentInfoService:auditPayment"
+
+  "queryCheckpays":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionPaymentInfoService:queryAuditPayment"
+
+  "changePassword":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserService:changePassword"
+
+  "viewUserInfo":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserService:viewUserInfo"
+
+  "queryLeaderBuzv":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserService:queryLeaderBuzv"
+
+  "forzenLeader":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserService:forzenLeader"
+
+  "queryMerchant":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:queryMerchant"
+
+  "queryAgent":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:queryAgent"
+
+  "submitMerchant":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:submitMerchant"
+
+  "createMerchant":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:createMerchant"
+
+  "tempSaveMerchant":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:tempSaveMerchant"
+
+  "updateVendor":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:updateVendor"
+
+  "createAgent":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:createAgent"
+
+  "findVendorById":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:findById"
+
+  "findVendorByBaseUser":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:findByBaseUser"
+
+  "submitAgent":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:submitAgent"
+
+  "deleteAgent":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:deleteAgent"
+
+  "deleteMerchant":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:deleteMerchant"
+
+  "auditMerchant":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:auditMerchant"
+
+  "submitMerchantBatch":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:submitMerchantBatch"
+
+  "queryOrder":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.OrderService:queryOrder"
+
+  "findOrderById":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.OrderService:findById"
+
+  "queryCommission":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionRuleService:queryCommission"
+
+  "queryItemsWithRules":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionRuleService:queryItems"
+
+  "queryCommissionVendor":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionResultOrderService:queryCommissionVendor"
+
+  "queryCommissionOrder":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionResultOrderService:queryCommissionOrder"
+
+  "findCommissionOrderDetailById":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionResultOrderService:findById"
+
+  "queryVendorChosenItem":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.VendorItemService:queryChosenItem"
+
+  "queryChosenItemByVendor":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.VendorItemService:queryChosenItemByVendor"
+
+  "createVendorChosenItem":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.VendorItemService:create"
+
+  "queryProvince":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.AddressService:queryProvince"
+
+  "queryCity":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.AddressService:queryCity"
+
+  "queryArea":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.AddressService:queryArea"
+
+  "queryItemCommissionRule":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.ItemCommissionRuleService:queryItemCommissionRule"
+
+  "queryCommissionRuleItem":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.ItemCommissionRuleService:queryItem"
+
+  "createItemCommission":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.ItemCommissionRuleService:createItemCommission"
+
+  "findCommissionRuleById":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionRuleService:findById"
+
+  "createCommission":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionRuleService:createCommission"
+
+  "disableCommissionRule":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionRuleService:disableCommissionRule"
+
+  "updateCommission":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionRuleService:updateCommission"
+
+  "queryCommissionStatistic":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionStatisticService:queryCommissionStatistic"
+
+  "queryCommissionStatisticDetail":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.CommissionStatisticService:queryCommissionStatisticDetail"
+
+  "viewGrouponOrder":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.OrderService:findGroupOrder"
+
+  "viewGrouponUser":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserService:findGroupUser"
+
+  "confirmFinance":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.OrderService:confirmRefundOrder"
+
+  "summaryReturn":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.OrderService:calcGroupRefundOrder"
+
+  "calcOrderVolumn":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.OrderService:calcGroupOrderVolumn"
+
+  "idsFindGroupOrder":
+    type: SPRING
+    uri: "io.terminus.auto.out.service.IdsOutService:findGroupOrder"
+
+  "getInvoiceStatistics":
+    type: SPRING
+    uri: "io.terminus.auto.out.service.EwdOutService:getInvoiceStatistics"
+
+  "transOmsstatus":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.OrderService:resetOrderOmsStatus"
+
+  "viewGrouponInvoice":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.InvoiceStatisticsService:findGroupOrderInvoice"
+
+  "receiveHpResult":
+    type: SPRING
+    uri: "io.terminus.auto.out.service.HpOutService:receiveHpResult"
+
+  "viewGrouponCompany":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserService:calcGroupUserByCompany"
+
+  "findMdmBankViewByFuzzyName":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.VendorService:findMdmBankViewByFuzzyName"
+
+  "findAgentByFuzzyName":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserService:findAgentByFuzzyName"
+
+  "getExportGroupOrderAddress":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.OrderService:getExportGroupOrderAddress"
+
+  "findViewByParentId":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:findViewByParentId"
+
+  "findAttributeViewByCategoryId":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:findAttributeViewByCategoryId"
+
+  "findAttributeViewName":
+    type: SPRING
+    uri: "io.terminus.auto.item.service.ItemService:findAttributeViewName"
+
+  "viewStock":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.PrepareStockOrderService:findStockByQueryDto"
+
+  "getExportPrepareStockUrl":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.PrepareStockOrderService:getExportPrepareStockUrl"

@@ -1,0 +1,22 @@
+{{#partial "base-title"}}{{{block "title"}}}{{/partial}}
+{{#partial "base-body"}}
+  <header class="header">
+    {{inject "common/header"}}
+    {{inject "common/subheader"}}
+  </header>
+
+  <div class="main-container">
+    <div class="sidebar-outer">
+      {{{block "siderbar"}}}
+    </div>
+    <div class="content-outer">
+       {{{block "body"}}}
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <footer>
+    {{inject "common/footer"}}
+  </footer>
+{{/partial}}
+{{> layout_base }}
+

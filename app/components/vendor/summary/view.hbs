@@ -1,0 +1,33 @@
+{{#component "js-comp vendor-summary"}}
+<p class="components-title"><strong class="tab-name">汇总信息</strong></p>
+<div class="status-contents">
+  <div class="stat blue-light">
+    <div class="visual">
+      <i class="fa fa-usd fa-3x fa-inverse fa-border fa-fw"></i>
+    </div>
+    <div class="detail">
+      <div class="number">
+        {{formatPrice _DATA_.commissionAll}}<i class="fa fa-rmb"></i>
+      </div>
+      <div class="desc">
+        应收佣金总额
+      </div>
+    </div>
+    <a class="more" href="#details">&nbsp; <i class="icon-next"></i> </a>
+  </div>
+  <div class="stat blue-light">
+    <div class="visual">
+      <i class="fa fa-credit-card fa-3x fa-inverse fa-border fa-fw"></i>
+    </div>
+    <div class="detail">
+      <div class="number">
+        {{formatPrice _DATA_.commissionPay}}<i class="fa fa-rmb"></i>
+      </div>
+      <div class="desc">
+        实收佣金总额
+      </div>
+    </div>
+    <a class="more" href="#details">&nbsp; <i class="icon-next"></i> </a>
+  </div>
+</div>
+{{/component}}

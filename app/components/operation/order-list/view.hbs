@@ -1,0 +1,217 @@
+{{#component "js-comp operation-orders"}}
+<p class="components-title"><strong class="tab-name">运营团购订单退货/退款统计</strong></p>
+<div class="status-contents">
+  <div class="stat blue-light">
+    <div class="visual">
+      <i class="fa fa-bar-chart fa-3x fa-inverse fa-border fa-fw"></i>
+    </div>
+    <div class="detail">
+      <div class="number js-has-retund">
+        {{notRefund}}
+      </div>
+      <div class="desc">
+        已经退货/退款数
+      </div>
+    </div>
+  </div>
+  <div class="stat blue-light">
+    <div class="visual">
+      <i class="fa fa-line-chart fa-3x fa-inverse fa-border fa-fw"></i>
+    </div>
+    <div class="detail">
+      <div class="number js-not-retund">
+        {{totalRefund}}
+      </div>
+      <div class="desc">
+        还剩退货/退款数
+      </div>
+    </div>
+  </div>
+</div>
+<p class="components-title"><strong class="tab-name">订单列表(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form operation-order-form" novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">团购单号</label>
+        <input name="groupOrderId" type="text" value="{{groupOrderId}}">
+      </span>
+      <span class="span3">
+        <label for="">平台流水</label>
+        <input name="payNo" type="text" value="{{payNo}}">
+      </span>
+      <span class="span3">
+        <label for="">支付流水</label>
+        <input name="transactionNo" type="text" value="{{transactionNo}}">
+      </span>
+    </fieldset>
+    <fieldset>
+      <span class="span3">
+        <label for="">订单状态</label>
+        <select name="status" class="select">
+          <option {{#equals status "-3,-7,-8,-9,-10"}}selected{{/equals}} value="-3,-7,-8,-9,-10">请选择</option>
+          <option
+            {{#if status}}
+              {{#equals status "-3,-7"}}
+                selected
+              {{/equals}}
+              {{else}}
+                selected
+            {{/if}}
+            value="-3,-7">可以退货/退款
+          </option>
+          <option {{#equals status "-8"}}selected{{/equals}} value="-8">财务退货/退款中</option>
+          <option {{#equals status "-9,-10"}}selected{{/equals}} value="-9,-10">退款完成</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">付款类型</label>
+        <select name="payType" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals payType "1"}}selected{{/equals}} value="1">微信</option>
+          <option
+            {{#equals payType "2,3"}}
+              selected
+            {{/equals}}
+            value="2,3">建行
+          </option>
+          <option
+            {{#equals payType "5,6"}}
+              selected
+            {{/equals}}
+            value="5,6">支付宝
+          </option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">OMS状态</label>
+        <select name="omsStatus" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals omsStatus "0"}}selected{{/equals}} value="0">未发送oms</option>
+          <option {{#equals omsStatus "1"}}selected{{/equals}} value="1">发送oms成功</option>
+          <option {{#equals omsStatus "2"}}selected{{/equals}} value="2">发送gvs成功</option>
+          <option {{#equals omsStatus "-1"}}selected{{/equals}} value="-1">发送oms失败</option>
+          <option {{#equals omsStatus "-2"}}selected{{/equals}} value="-2">发送gvs失败</option>
+          <option {{#equals omsStatus "-3"}}selected{{/equals}} value="-3">OES订单审核不通过</option>
+        </select>
+      </span>
+    </fieldset>
+    <fieldset>
+      <span class="span3">
+        <label for="">GVS单号</label>
+        <input name="omsNo" type="text" value="{{omsNo}}">
+      </span>
+      <span class="span3">
+        <label for="">订单时间
+        </label>
+        <input id="orderDateStart" name="orderDateStart" class="input-small" type="text" value="{{orderDateStart}}">
+        -
+        <input id="orderDateEnd" name="orderDateEnd" class="input-small" type="text" value="{{orderDateEnd}}">
+      </span>
+      <span class="span1 last">
+        <button type="submit" class="btn btn-primary js-search">筛选</button>
+        &nbsp;
+        <a href="/operation/dashboard">取消</a>
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p>
+  <button class="btn btn-primary js-muti-omsstatus">批量重新发送oms</button>
+  <button class="btn btn-primary js-return-mutimoney">批量退款/退货</button>
+  <button class="btn btn-primary js-export-searchorder">导出查询订单</button>
+</p>
+<div class="scroll-container">
+  <table class="table table-striped group-order-table">
+    <thead>
+      <tr>
+        <th width="40"><input type="checkbox" class="js-select-all"></th>
+        <th width="100">订单号</th>
+        <th width="150">团购订单号</th>
+        <th width="250">支付流水号</th>
+        <th width="250">支付平台流水号</th>
+        <th width="200">GVS订单号</th>
+        <th width="90">订单金额(元)</th>
+        <th width="90">退款金额(元)</th>
+        <th width="110">订单日期</th>
+        <th width="120">订单状态</th>
+        <th width="110">OMS状态</th>
+        <th width="105">付款类型</th>
+        <th width="130">操作</th>
+        <th width="80">用户姓名</th>
+        <th width="130">用户电话</th>
+        <th width="150">商品信息</th>
+        <th width="130">所在企业</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each _DATA_.data}}
+        <tr>
+          <td><input type="checkbox" value="{{referOrderId}}" data-status="{{status}}" data-omsstatus="{{omsStatus}}"  class="js-batch-checkbox"></td>
+          <td>{{id}}</td>
+          <td>{{referUpOrderId}}</td>
+          <td>{{transactionNo}}</td>
+          <td>{{payNo}}</td>
+          <td>{{gvsOrderCode}}</td>
+          <td>{{formatPrice amt "Y" 2}}</td>
+          <td>
+            {{#equals status "-3"}}{{formatPrice amt "Y" 2}}{{/equals}}
+            {{#equals status "-7"}}{{formatPrice amt "Y" 2}}{{/equals}}
+            {{#equals status "-8"}}{{formatPrice amt "Y" 2}}{{/equals}}
+            {{#equals status "-9"}}{{formatPrice amt "Y" 2}}{{/equals}}
+          </td>
+          <td>{{formatDate orderDate "day"}}</td>
+          <td>
+            {{#equals status "0"}}已提交{{/equals}}
+            {{#equals status "1"}}卖家已发货{{/equals}}
+            {{#equals status "2"}}交易完成{{/equals}}
+            {{#equals status "-1"}}买家关闭{{/equals}}
+            {{#equals status "-2"}}卖家关闭{{/equals}}
+            {{#equals status "-3"}}用户退款{{/equals}}
+            {{#equals status "-7"}}用户退货{{/equals}}
+            {{#equals status "-8"}}退货/退款中{{/equals}}
+            {{#equals status "-9"}}财务退款完成{{/equals}}
+            {{#equals status "-10"}}财务退款完成{{/equals}}
+          </td>
+          <td>
+            {{#equals omsStatus "0"}}未发送oms{{/equals}}
+            {{#equals omsStatus "1"}}发送oms成功{{/equals}}
+            {{#equals omsStatus "2"}}发送gvs成功{{/equals}}
+            {{#equals omsStatus "-1"}}发送oms失败{{/equals}}
+            {{#equals omsStatus "-2"}}发送gvs失败{{/equals}}
+            {{#equals omsStatus "-3"}}OES订单审核不通过{{/equals}}
+          </td>
+          <td>
+            {{#equals payType "1"}}微信{{/equals}}
+            {{#equals payType "2"}}建行{{/equals}}
+            {{#equals payType "3"}}建行{{/equals}}
+            {{#equals payType "5"}}支付宝{{/equals}}
+            {{#equals payType "6"}}支付宝{{/equals}}
+          </td>
+          <td>
+            {{#equals status "-3"}}
+              <button class="btn btn-primary js-return-onemoney" data-id="{{referOrderId}}" data-status="{{status}}">退款</button><br>
+            {{/equals}}
+            {{#equals status "-7"}}
+              <button class="btn btn-primary js-return-onemoney" data-id="{{referOrderId}}" data-status="{{status}}">退货</button><br>
+            {{/equals}}
+            {{#equals omsStatus "-1"}}
+              <button class="btn btn-primary js-retransmit-omsstatus" data-id="{{referOrderId}}" data-omsstatus="{{omsStatus}}">重新发送oms</button><br>
+            {{/equals}}
+            <a href="/operation/orderdetail?groupOrderId={{referUpOrderId}}&logisticsInfo={{logisticsInfo}}&vomStatus={{vomStatus}}&omsStatus={{omsStatus}}">查看物流/状态</a>
+          </td>
+          <td>{{nickname}}</td>
+          <td>{{mobile}}</td>
+          <td>{{itemDesc}}</td>
+          <td>{{companyName}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="orders-pagination" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}
+

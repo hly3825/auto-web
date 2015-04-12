@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test weixin</title>
+    <meta charset="utf-8">
+    <meta name="author" content="test.weixin.com">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/assets/styles/vendor.css">
+    <link rel="stylesheet" href="/assets/styles/app.css">
+  <!--[if lt IE 9]><script src="/assets/scripts/ie8.js"></script><![endif]-->
+
+  </head>
+  <body>
+  通过http://www.o2o.com/fake?orderid=xxx 这里xxx是第一步用户下单生成的订单号
+
+  <div>
+    <a href="http://www.o2o.com/api/test/process1" class="btn btn-danger">用户下单</a>
+    <p></p>
+    <a href="http://www.o2o.com/api/test/process2?orderid={{orderid}}" class="btn btn-danger">订单付款</a>
+    <p></p>
+    <a href="http://www.o2o.com/api/test/process4?orderDate=2014-10-13" class="btn btn-danger">传给ehaier</a>
+    <p></p>
+    <a href="http://www.o2o.com/api/test/process3?orderid={{orderid}}&status=1" class="btn btn-danger">订单已发货</a>
+    <p></p>
+    <a href="http://www.o2o.com/api/test/process3?orderid={{orderid}}&status=2" class="btn btn-danger">交易完成</a>
+    <p></p>
+    <a href="http://www.o2o.com/api/test/process5?orderid={{orderid}}" class="btn btn-danger">生成订单佣金</a>
+    <p></p>
+    <a href="http://www.o2o.com/api/test/process6?orderDate=2014-10-13" class="btn btn-danger">生成到日得佣金</a>
+  </div>
+
+  <script src="/assets/scripts/vendor.js"></script>
+  <script src="/assets/scripts/app.js"></script>
+  <script src="/assets/scripts/vendor/holder/holder.js"></script>
+  <script>require("app")()</script>
+  </body>
+</html>
+

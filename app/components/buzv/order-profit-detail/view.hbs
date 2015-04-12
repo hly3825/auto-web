@@ -1,0 +1,66 @@
+{{#component "js-comp buzv-orderprofitdetail"}}
+<p class="components-title"><strong class="tab-name">订单分润详情</strong></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="181">商品基本信息</th>
+      <th width="100">购买数量</th>
+      <th width="139">金额(元)</th>
+      <th width="108">订单状态</th>
+      <th width="165">订单日期</th>
+      <th width="116">规则类型</th>
+      <th width="117">佣金比例</th>
+      <th width="118">商户佣金金额(元)</th>
+    </tr>
+  </thead>
+</table>
+<br>
+{{#each _DATA_.commissionResultOrderDetailDtoList}}
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td colspan="9" class="left-text td-heading">
+        子订单编号: {{orderDetailId}}
+      </td>
+    </tr>
+    <tr>
+      <td class="left-text" width="182">
+        {{itemName}}<br>
+        商品类别: {{#equals type "1"}}冰箱{{/equals}}
+                 {{#equals type "2"}}洗衣机{{/equals}}
+                 {{#equals type "3"}}空调{{/equals}}
+                 {{#equals type "4"}}厨电{{/equals}}
+                 {{#equals type "5"}}热水器{{/equals}}
+                 {{#equals type "6"}}电视{{/equals}}
+                 {{#equals type "7"}}冷柜{{/equals}}<br>
+        商品编码: {{itemCode}}
+      </td>
+      <td width="89">{{itemQuantity}}件</td>
+      <td width="130">{{formatPrice itemAmt "Y" 2 }}</td>
+      <td width="98">
+        {{#equals orderDetailStatus "-1"}}取消{{/equals}}
+        {{#equals orderDetailStatus "1"}}正常{{/equals}}
+      </td>
+      <td width="158">{{formatDate orderDate}}</td>
+      <td width="106">
+        {{#equals ruleType "1"}}按比例{{/equals}}
+        {{#equals ruleType "2"}}满返现{{/equals}}
+      </td>
+      <td width="107">{{vendorCommissionRate}}{{#if vendorCommissionRate}}%{{/if}}</td>
+      <td width="107">
+        {{formatPrice vendorCommission "Y" 2 }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+{{/each}}
+<hr>
+<div class="align-right">
+  <div class="total">总计：{{formatPrice _DATA_.commissionResultOrder.vendorCommission "Y" 2}}</div>
+</div>
+<p></p>
+<div class="align-center">
+  <a href="/buzv/orderprofits" class="btn btn-primary">返回</a>
+</div>
+{{/component}}

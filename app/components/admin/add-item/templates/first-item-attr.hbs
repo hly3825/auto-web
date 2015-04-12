@@ -1,0 +1,11 @@
+<div class="single-attribute">
+  <label><span class="required">*</span>一级属性:</label>
+  <p class="firstLevel-block itemattr-style">
+  {{#each itemData}}
+    <span class="itemattr-color">
+      <input name="firstLevel" class="firstLevel js-changenext-attr" type="radio" data-parentid="{{parentId}}"data-id="{{id}}" data-categoryid="{{categoryId}}" data-name="{{name}}" id="attributeKey-{{id}}">
+      <label for="attributeKey-{{id}}">{{name}}</label>
+    </span>
+  {{/each}}
+  </p>
+</div>

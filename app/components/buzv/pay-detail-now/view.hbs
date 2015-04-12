@@ -1,0 +1,65 @@
+{{#component "js-comp buzv-paydetailnow"}}
+<p class="components-title"><strong class="tab-name">付款信息(<span class="total-num">{{_DATA_.commissionVendorMonthPaging.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form ">
+    <fieldset>
+      <div class="status-contents">
+        <div class="stat blue-light">
+          <div class="visual">
+            <i class="fa fa-line-chart fa-3x fa-inverse fa-border fa-fw"></i>
+          </div>
+          <div class="detail">
+            <div class="number">
+                 {{formatPrice _DATA_.commissionAll }}<i class="fa fa-rmb"></i>
+            </div>
+            <div class="desc">佣金金额</div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<p></p>
+<div class="block block-search">
+  <form class="form " novalidate="true">
+    <fieldset>
+      <a class="btn btn-primary js-apply-pay">申请付款</a>
+      <a class="btn btn-primary js-paydetail-exports">导出应付款项信息</a>
+      <span class="span3">
+        <label for="">商户编号</label>
+        <input name="vendorCode" type="text" value="{{vendorCode}}">
+      </span>
+      <span class="span1">
+        <button type="submit" class="btn btn-primary">筛选</button>
+        &nbsp;
+        <a href="/buzv/paydetailnow">取消</a>
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="230">商户编号</th>
+      <th width="260">商户名称</th>
+      <th width="285">佣金金额(元)</th>
+      <th width="275">付款时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each _DATA_.commissionVendorMonthPaging.data}}
+      <tr>
+        <td>{{vendorCode}}</td>
+        <td>{{vendorName}}</td>
+        <td>{{formatPrice commission}}</td>
+        <td>{{formatDate month}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="paydetailnow-pagination" data-total="{{_DATA_.commissionVendorMonthPaging.total}}"></div>
+</div>
+{{/component}}

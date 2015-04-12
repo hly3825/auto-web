@@ -1,0 +1,57 @@
+{{#component "js-comp buzv-sidebar sidebar"}}
+  <ul class="sidebar-ul">
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;首页</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item
+        {{#equals _PATH_ "buzv/dashboard"}}active{{/equals}}
+        "><div class="text-link"><a href="/buzv/dashboard" class="inner-item-a">首页</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;基础信息</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item
+        {{#equals _PATH_ "buzv/items"}}active{{/equals}}
+        {{#equals _PATH_ "buzv/itemdetail"}}active{{/equals}}
+        "><div class="text-link"><a href="/buzv/items" class="inner-item-a">商品列表</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item {{#equals _PATH_ "buzv/addvendor"}}active{{/equals}}"><div class="text-link"><a href="/buzv/addvendor" class="inner-item-a">商户注册</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item {{#equals _PATH_ "buzv/profitsRule"}}active{{/equals}}"><div class="text-link"><a href="/buzv/profitsRule" class="inner-item-a">佣金规则</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;查询</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item
+        {{#equals _PATH_ "buzv/orders"}}active{{/equals}}
+        {{#equals _PATH_ "buzv/orderdetail"}}active{{/equals}}
+        "><div class="text-link"><a href="/buzv/orders" class="inner-item-a">订单查询</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item
+        {{#equals _PATH_ "buzv/vendors"}}active{{/equals}}
+        {{#equals _PATH_ "buzv/vendordetail"}}active{{/equals}}
+        "><div class="text-link"><a href="/buzv/vendors" class="inner-item-a">商户查询</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item {{#equals _PATH_ "buzv/vendorprofits"}}active{{/equals}}"><div class="text-link"><a href="/buzv/vendorprofits" class="inner-item-a">商户佣金</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item
+        {{#equals _PATH_ "buzv/orderprofits"}}active{{/equals}}
+        {{#equals _PATH_ "buzv/orderprofitdetail"}}active{{/equals}}
+        "><div class="text-link"><a href="/buzv/orderprofits" class="inner-item-a">订单佣金</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item
+        {{#equals _PATH_ "buzv/pay"}}active{{/equals}}
+        {{#equals _PATH_ "buzv/paydetailnow"}}active{{/equals}}
+        {{#equals _PATH_ "buzv/paydetailhistory"}}active{{/equals}}
+        "><div class="text-link"><a href="/buzv/pay" class="inner-item-a">付款信息</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;统计报表</strong></a>
+      <ul class="inner sidebar-inner-ul">
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;个人资料</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item {{#equals _PATH_ "buzv/changepassword"}}active{{/equals}}"><div class="text-link"><a href="/buzv/changepassword" class="inner-item-a">修改个人密码</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+  </ul>
+{{/component}}

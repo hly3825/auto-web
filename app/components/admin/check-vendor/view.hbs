@@ -1,0 +1,76 @@
+{{#component "js-comp admin-checkvendor"}}
+<p class="components-title"><strong class="tab-name">商户信息(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form " novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">状态</label>
+        <select name="status" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals status "0"}}selected{{/equals}} value="0">已保存</option>
+          <option {{#equals status "-1"}}selected{{/equals}} value="-1">审核不通过</option>
+          <option {{#equals status "1"}}selected{{/equals}} value="1">审核中</option>
+          <option {{#equals status "2"}}selected{{/equals}} value="2">审核通过</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">商户编码</label>
+        <input name="vendorCode" type="text" value="{{vendorCode}}">
+      </span>
+      <span class="span1">
+      <label for=""></label>
+        <button type="submit" class="btn btn-primary">筛选</button>
+        <a href="/admin/checkvendor">取消</a>
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="40"><input type="checkbox"></th>
+      <th width="165">商户编码</th>
+      <th width="165">商户名称</th>
+      <th width="165">所属小微</th>
+      <th width="100">电话</th>
+      <th width="100">传真</th>
+      <th width="195">税务登记号</th>
+      <th width="150">状态</th>
+      <th width="150">商户二维码</th>
+      <th width="200">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each _DATA_.data }}
+      <tr>
+        <td><input type="checkbox" value="{{id}}"></td>
+        <td>{{vendorCode}}</td>
+        <td>{{vendorName}}</td>
+        <td>{{buzvName}}</td>
+        <td>{{phone}}</td>
+        <td>{{fax}}</td>
+        <td>{{taxCode}}</td>
+        <td>
+          {{#equals status "0"}}已保存{{/equals}}
+          {{#equals status "-1"}}审核不通过{{/equals}}
+          {{#equals status "1"}}审核中{{/equals}}
+          {{#equals status "2"}}审核通过{{/equals}}
+        </td>
+        <td>
+          {{#if vendorQrcode.qrPath}}
+            <a class="js-link-qrcode" data-link="{{vendorQrcode.qrPath}}">二维码</a>&nbsp;
+          {{/if}}
+        </td>
+        <td>
+          <a href="/admin/vendordetail?id={{id}}">查看详情</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="checkvendor-pagination" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}

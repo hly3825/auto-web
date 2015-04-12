@@ -1,0 +1,32 @@
+{{#component "js-comp agent-sidebar sidebar"}}
+  <ul class="sidebar-ul">
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;佣金管理</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item
+        {{#equals _PATH_ "agent/vendorprofits"}}active{{/equals}}
+        {{#equals _PATH_ "agent/orders"}}active{{/equals}}
+        "><div class="text-link"><a href="/agent/vendorprofits" class="inner-item-a">商户佣金</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item
+        {{#equals _PATH_ "agent/orderprofits"}}active{{/equals}}
+        {{#equals _PATH_ "agent/orderprofitdetail"}}active{{/equals}}
+        "><div class="text-link"><a href="/agent/orderprofits" class="inner-item-a">订单佣金</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;商户管理</strong></a>
+      <ul class="inner sidebar-inner-ul">
+         <li class="inner-item {{#equals _PATH_ "agent/vendors"}}active{{/equals}}
+        {{#equals _PATH_ "agent/vendordetail"}}active{{/equals}}
+         "><div class="text-link"><a href="/agent/vendors" class="inner-item-a">商户列表</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;个人资料</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item {{#equals _PATH_ "agent/changepassword"}}active{{/equals}}"><div class="text-link"><a href="/agent/changepassword" class="inner-item-a">修改个人密码</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item {{#equals _PATH_ "agent/personinfo"}}active{{/equals}}"><div class="text-link"><a href="/agent/personinfo" class="inner-item-a">查看个人信息</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+  </ul>
+{{/component}}

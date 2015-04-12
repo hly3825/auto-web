@@ -1,0 +1,791 @@
+app: auto-web
+
+components:
+  "admin/items": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-商品列表查询"
+    service: ":queryItemsWithRules" # app:serviceKey
+    desc: "管理员-商品列表查询" # 可选
+
+  "admin/item-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-查看商品详情"
+    service: ":findItemById" # app:serviceKey
+    desc: "管理员-查看商品详情" # 可选
+
+  "admin/update-Item": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-更新商品"
+    service: ":findItemById" # app:serviceKey
+    desc: "管理员-更新商品" # 可选
+
+  "admin/leaders": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-总部信息"
+    service: ":queryLeader" # app:serviceKey
+    desc: "管理员-总部信息" # 可选
+
+  "admin/leader-buzv": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-总部下属小微"
+    service: ":queryLeaderBuzv" # app:serviceKey
+    desc: "管理员-总部下属小微" # 可选
+
+  "admin/buzv": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-小微信息"
+    service: ":queryBuzv" # app:serviceKey
+    desc: "管理员-小微信息" # 可选
+
+  "admin/check-vendor": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-商户信息"
+    service: ":queryMerchant" # app:serviceKey
+    desc: "管理员-商户信息" # 可选
+
+  "admin/agents": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-代理商信息"
+    service: ":queryAgent" # app:serviceKey
+    desc: "管理员-代理商信息" # 可选
+
+  "admin/agent-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-代理商详细信息"
+    service: ":findVendorById" # app:serviceKey
+    desc: "管理员-代理商详细信息" # 可选
+
+  "admin/orders": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-订单列表"
+    service: ":queryOrder" # app:serviceKey
+    desc: "管理员-订单列表" # 可选
+
+  "admin/order-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-订单详情"
+    service: ":findOrderById" # app:serviceKey
+    desc: "管理员-订单详情" # 可选
+
+  "admin/vendor-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-商户详细信息"
+    service: ":findVendorById" # app:serviceKey
+    desc: "管理员-商户详细信息" # 可选
+
+  "admin/add-agent": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-商户添加代理商"
+    service: ":findVendorById" # app:serviceKey
+    desc: "管理员-商户添加代理商" # 可选
+
+  "admin/profits-Rule": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-佣金规则查询"
+    service: ":queryCommission" # app:serviceKey
+    desc: "管理员-佣金规则查询" # 可选
+
+  "admin/add-rule": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-添加规则"
+    service: ":findCommissionRuleById" # app:serviceKey
+    desc: "管理员-添加规则" # 可选
+
+  "vendor/items":
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "商户-商品列表查询"
+    service: ":queryItemsWithRules" # app:serviceKey
+    desc: "商户-商品列表查询" # 可选
+
+  "vendor/item-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "商户-查看商品详情"
+    service: ":findItemById" # app:serviceKey
+    desc: "商户-查看商品详情" # 可选
+
+  "vendor/orders": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "商户-订单列表"
+    service: ":queryOrder" # app:serviceKey
+    desc: "商户-订单列表" # 可选
+
+  "vendor/order-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "商户-订单详情"
+    service: ":findOrderById" # app:serviceKey
+    desc: "商户-订单详情" # 可选
+
+  "vendor/vendor-profits": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "商户-商户佣金"
+    service: ":queryCommissionOrder" # app:serviceKey
+    desc: "商户-商户佣金" # 可选
+
+  "vendor/order-profit-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "商户-订单分润详情"
+    service: ":findCommissionOrderDetailById" # app:serviceKey
+    desc: "商户-订单分润详情" # 可选
+
+  "vendor/summary": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "商户-首页统计信息"
+    service: ":queryCommissionStatistic" # app:serviceKey
+    desc: "商户-首页统计信息" # 可选
+
+  "vendor/person-info": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "商户-个人信息"
+    service: ":findVendorByBaseUser" # app:serviceKey
+    desc: "商户-个人信息" # 可选
+
+  "buzv/items":
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-商品列表查询"
+    service: ":queryItemsWithRules" # app:serviceKey
+    desc: "小微-商品列表查询" # 可选
+
+  "buzv/pay":
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-付款信息查询"
+    service: ":queryPaysInfo" # app:serviceKey
+    desc: "小微-付款信息查询" # 可选
+
+  "buzv/pay-detail-now":
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-付款信息查询"
+    service: ":queryPaysInfoNow" # app:serviceKey
+    desc: "小微-付款信息查询" # 可选
+
+  "buzv/pay-detail-history":
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-付款信息查询"
+    service: ":queryPaysInfoHistory" # app:serviceKey
+    desc: "小微-付款信息查询" # 可选
+
+  "buzv/profits-Rule": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-佣金规则查询"
+    service: ":queryCommission" # app:serviceKey
+    desc: "小微-佣金规则查询" # 可选
+
+  "buzv/item-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-查看商品详情"
+    service: ":findItemById" # app:serviceKey
+    desc: "小微-查看商品详情" # 可选
+
+  "buzv/vendor-profits": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-商户佣金"
+    service: ":queryCommissionVendor" # app:serviceKey
+    desc: "小微-商户佣金" # 可选
+
+  "buzv/order-profits": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-订单佣金"
+    service: ":queryCommissionOrder" # app:serviceKey
+    desc: "小微-订单佣金" # 可选
+
+  "buzv/orders": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-订单列表"
+    service: ":queryOrder" # app:serviceKey
+    desc: "小微-订单列表" # 可选
+
+  "buzv/order-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-订单详情"
+    service: ":findOrderById" # app:serviceKey
+    desc: "小微-订单详情" # 可选
+
+  "buzv/vendors": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-商户信息"
+    service: ":queryMerchant" # app:serviceKey
+    desc: "小微-商户信息" # 可选
+
+  "buzv/add-vendor": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-商户详细信息"
+    service: ":findVendorById" # app:serviceKey
+    desc: "小微-商户详细信息" # 可选
+
+  "buzv/vendor-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-商户详细信息"
+    service: ":findVendorById" # app:serviceKey
+    desc: "小微-商户详细信息" # 可选
+
+  "buzv/order-profit-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-订单分润详情"
+    service: ":findCommissionOrderDetailById" # app:serviceKey
+    desc: "小微-订单分润详情" # 可选
+
+  "buzv/dashboard": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "小微-首页统计信息"
+    service: ":queryCommissionStatistic" # app:serviceKey
+    desc: "小微-首页统计信息" # 可选
+
+  "agent/vendors": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "代理商-商户信息"
+    service: ":queryMerchant" # app:serviceKey
+    desc: "代理商-商户信息" # 可选
+
+  "agent/vendor-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "代理商-商户详细信息"
+    service: ":findVendorById" # app:serviceKey
+    desc: "代理商-商户详细信息" # 可选
+
+  "agent/profits": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "代理商-佣金规则查询"
+    service: ":queryCommission" # app:serviceKey
+    desc: "代理商-佣金规则查询" # 可选
+
+  "agent/vendor-profits": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "代理商-商户佣金"
+    service: ":queryCommissionVendor" # app:serviceKey
+    desc: "代理商-商户佣金" # 可选
+
+  "agent/order-profits": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "代理商-订单佣金"
+    service: ":queryCommissionOrder" # app:serviceKey
+    desc: "代理商-订单佣金" # 可选
+
+  "agent/orders": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "代理商-订单列表"
+    service: ":queryOrder" # app:serviceKey
+    desc: "代理商-订单列表" # 可选
+
+  "agent/order-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "代理商-订单详情"
+    service: ":findOrderById" # app:serviceKey
+    desc: "代理商-订单详情" # 可选
+
+  "agent/order-profit-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "代理商-订单分润详情"
+    service: ":findCommissionOrderDetailById" # app:serviceKey
+    desc: "代理商-订单分润详情" # 可选
+
+  "agent/person-info": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "代理商-个人信息"
+    service: ":findVendorByBaseUser" # app:serviceKey
+    desc: "代理商-个人信息" # 可选
+
+  "leader/profits-Rule": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-佣金规则查询"
+    service: ":queryCommission" # app:serviceKey
+    desc: "总部-佣金规则查询" # 可选
+
+  "leader/vendor-profits": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-商户佣金"
+    service: ":queryCommissionVendor" # app:serviceKey
+    desc: "总部-商户佣金" # 可选
+
+  "leader/order-profits": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-订单佣金"
+    service: ":queryCommissionOrder" # app:serviceKey
+    desc: "总部-订单佣金" # 可选
+
+  "leader/items":
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-商品列表查询"
+    service: ":queryItemsWithRules" # app:serviceKey
+    desc: "总部-商品列表查询" # 可选
+
+  "leader/check-pay":
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-付款审核信息查询"
+    service: ":queryCheckpays" # app:serviceKey
+    desc: "总部-付款审核信息查询" # 可选
+
+  "leader/item-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-查看商品详情"
+    service: ":findItemById" # app:serviceKey
+    desc: "总部-查看商品详情" # 可选
+
+  "leader/buzv": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-小微信息"
+    service: ":queryBuzv" # app:serviceKey
+    desc: "总部-小微信息" # 可选
+
+  "leader/orders": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-订单列表"
+    service: ":queryOrder" # app:serviceKey
+    desc: "总部-订单列表" # 可选
+
+  "leader/order-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-订单详情"
+    service: ":findOrderById" # app:serviceKey
+    desc: "总部-订单详情" # 可选
+
+  "leader/vendors": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-商户信息"
+    service: ":queryMerchant" # app:serviceKey
+    desc: "总部-商户信息" # 可选
+
+  "leader/vendor-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-商户详细信息"
+    service: ":findVendorById" # app:serviceKey
+    desc: "总部-商户详细信息" # 可选
+
+  "leader/order-profit-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-订单分润详情"
+    service: ":findCommissionOrderDetailById" # app:serviceKey
+    desc: "总部-订单分润详情" # 可选
+
+  "leader/dashboard": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "总部-首页统计信息"
+    service: ":queryCommissionStatistic" # app:serviceKey
+    desc: "总部-首页统计信息" # 可选
+
+  "common/person-info": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-查看个人信息"
+    service: ":viewUserInfo" # app:serviceKey
+    desc: "用户-查看个人信息" # 可选
+
+  "groupon/order-groupon-list": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购订单信息"
+    service: ":viewGrouponOrder" # app:serviceKey
+    desc: "用户-团购订单信息" # 可选
+
+  "groupon/order-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购物流/状态信息信息"
+    service: ":viewGrouponOrder" # app:serviceKey
+    desc: "用户-团购物流/状态信息信息" # 可选
+
+  "groupon/groupon-user": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购用户信息"
+    service: ":viewGrouponUser" # app:serviceKey
+    desc: "用户-团购用户信息" # 可选
+
+  "finance/order-list": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购订单信息"
+    service: ":viewGrouponOrder" # app:serviceKey
+    desc: "用户-团购订单信息" # 可选
+
+  "finance/order-search": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购订单信息"
+    service: ":viewGrouponOrder" # app:serviceKey
+    desc: "用户-团购订单信息" # 可选
+
+  "operation/order-list": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购订单信息"
+    service: ":viewGrouponOrder" # app:serviceKey
+    desc: "用户-团购订单信息" # 可选
+
+  "operation/order-detail": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购物流/状态信息"
+    service: ":viewGrouponOrder" # app:serviceKey
+    desc: "用户-团购物流/状态信息" # 可选
+
+  "operation/invoice-list": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购发票信息"
+    service: ":viewGrouponInvoice" # app:serviceKey
+    desc: "用户-团购发票信息" # 可选
+
+  "groupon/groupon-company": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购企业信息统计"
+    service: ":viewGrouponCompany" # app:serviceKey
+    desc: "用户-团购企业信息统计" # 可选
+
+  "groupon/stock": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "用户-团购备货单信息统计"
+    service: ":viewStock" # app:serviceKey
+    desc: "用户-团购备货单信息统计" # 可选
+
+mappings:
+  - pattern: "api/item/{itemId}/update"
+    methods:
+      - POST
+    service: ":updateItem"
+    desc: "管理员-更新商品"
+
+  - pattern: "api/item/create"
+    methods:
+      - POST
+    service: ":createItem"
+    desc: "管理员-添加商品"
+
+  - pattern: "api/item/dealShelves"
+    methods:
+      - POST
+    service: ":dealShelves"
+    desc: "管理员-商品上下架"
+
+  - pattern: "api/item/import"
+    methods:
+      - POST
+    service: ":importItems"
+    desc: "管理员-批量导入商品"
+
+  - pattern: "api/leader/frozen"
+    methods:
+      - POST
+    service: ":forzenLeader"
+    desc: "管理员-冻结总部"
+
+  - pattern: "api/agent/add"
+    methods:
+      - POST
+    service: ":createAgent"
+    desc: "管理员-添加代理商"
+
+  - pattern: "api/agent/update"
+    methods:
+      - POST
+    service: ":updateVendor"
+    desc: "管理员-更新代理商"
+
+  - pattern: "api/agent/submit"
+    methods:
+      - POST
+    service: ":submitAgent"
+    desc: "管理员-直接提交代理商"
+
+  - pattern: "api/agent/delete"
+    methods:
+      - POST
+    service: ":deleteAgent"
+    desc: "管理员-删除代理商"
+
+  - pattern: "api/vendor/delete"
+    methods:
+      - POST
+    service: ":deleteMerchant"
+    desc: "小微-删除商户"
+
+  - pattern: "api/vendor/audit"
+    methods:
+      - POST
+    service: ":auditMerchant"
+    desc: "小微-审核商户"
+
+  - pattern: "api/vendor/add"
+    methods:
+      - POST
+    service: ":createMerchant"
+    desc: "小微-添加商户"
+
+  - pattern: "api/vendor/submit"
+    methods:
+      - POST
+    service: ":submitMerchant"
+    desc: "小微-提交商户"
+
+  - pattern: "api/vendor/submitbatch"
+    methods:
+      - POST
+    service: ":submitMerchantBatch"
+    desc: "小微-批量提交商户"
+
+  - pattern: "api/vendor/tempsave"
+    methods:
+      - POST
+    service: ":tempSaveMerchant"
+    desc: "小微-暂存商户"
+
+  - pattern: "api/vendor/update"
+    methods:
+      - POST
+    service: ":updateVendor"
+    desc: "小微-更新商户"
+
+  - pattern: "api/pay/applyPay"
+    methods:
+      - POST
+    service: ":payApply"
+    desc: "小微-申请付款"
+
+  - pattern: "api/checkpay/checkPay"
+    methods:
+      - POST
+    service: ":payCheck"
+    desc: "​总部-审核付款"
+
+  - pattern: "api/vendor/items"
+    methods:
+      - GET
+    service: ":queryVendorChosenItem"
+    desc: "小微-查找商户可以添加的商品"
+
+  - pattern: "api/vendor/{vendorId}/items"
+    methods:
+      - GET
+    service: ":queryChosenItemByVendor"
+    desc: "小微-查找商户可以添加的商品"
+
+  - pattern: "api/vendor/{vendorId}/chooseditems"
+    methods:
+      - GET
+    service: ":findVendorItem"
+    desc: "小微-查找商户已经添加的商品"
+
+  - pattern: "api/vendor/create/items"
+    methods:
+      - POST
+    service: ":createItemCommission"
+    desc: "小微-商户添加商品"
+
+  - pattern: "api/user/change_password"
+    methods:
+      - POST
+    service: ":changePassword"
+    desc: "用户-密码修改"
+
+  - pattern: "api/address/province"
+    methods:
+      - GET
+    service: ":queryProvince"
+    desc: "用户-查询省"
+
+  - pattern: "api/address/{provinceid}/city"
+    methods:
+      - GET
+    service: ":queryCity"
+    desc: "用户-查询市"
+
+  - pattern: "api/address/{cityid}/area"
+    methods:
+      - GET
+    service: ":queryArea"
+    desc: "用户-查询区"
+
+  - pattern: "api/rule/{ruleId}/items"
+    methods:
+      - GET
+    service: ":queryItemCommissionRule"
+    desc: "管理员-查询佣金规则关联的商品"
+
+  - pattern: "api/rule/{ruleId}/chooseitems"
+    methods:
+      - GET
+    service: ":queryCommissionRuleItem"
+    desc: "管理员-查询可以选择的商品"
+
+  - pattern: "api/summary/commission"
+    methods:
+      - GET
+    service: ":queryCommissionStatisticDetail"
+    desc: "首页Dashboard统计信息图标"
+
+  - pattern: "api/rules/search"
+    methods:
+      - GET
+    service: ":queryCommission"
+    desc: "admin查询规则信息"
+
+  - pattern: "api/items/rule/create"
+    methods:
+      - POST
+    service: ":createItemCommission"
+    desc: "admin给商品添加规则"
+
+  - pattern: "api/rule/create"
+    methods:
+      - POST
+    service: ":createCommission"
+    desc: "添加规则"
+
+  - pattern: "api/rule/update"
+    methods:
+      - POST
+    service: ":updateCommission"
+    desc: "更新规则"
+
+  - pattern: "api/rule/disable"
+    methods:
+      - POST
+    service: ":disableCommissionRule"
+    desc: "停用规则"
+
+  - pattern: "api/order/returnMoney"
+    methods:
+      - POST
+    service: ":confirmFinance"
+    desc: "退款"
+
+  - pattern: "api/order/returnSummary"
+    methods:
+      - POST
+    service: ":summaryReturn"
+    desc: "统计退货/退款"
+
+  - pattern: "api/order/calcOrderVolumn"
+    methods:
+      - POST
+    service: ":calcOrderVolumn"
+    desc: "统计订单交易"
+
+  - pattern: "api/out/idsFindGroupOrder"
+    methods:
+      - GET
+    service: ":idsFindGroupOrder"
+    desc: "ids查询团购订单信息"
+
+  - pattern: "api/out/getInvoiceStatistics"
+    methods:
+      - ALL
+    service: ":getInvoiceStatistics"
+    desc: "edw查询发票统计信息"
+
+  - pattern: "api/out/receiveHpResult"
+    methods:
+      - ALL
+    service: ":receiveHpResult"
+    desc: "hp返回鉴定单结果"
+
+  - pattern: "api/order/transOmsstatus"
+    methods:
+      - POST
+    service: ":transOmsstatus"
+    desc: "OMS状态重置"
+
+  - pattern: "api/mdm/bank/search"
+    methods:
+      - ALL
+    service: ":findMdmBankViewByFuzzyName"
+    desc: "银行自动补全"
+
+  - pattern: "api/mdm/agent/search"
+    methods:
+      - ALL
+    service: ":findAgentByFuzzyName"
+    desc: "agent自动补全"
+
+  - pattern: "api/grouporder/redisAddress"
+    methods:
+      - ALL
+    service: ":getExportGroupOrderAddress"
+    desc: "获得订单导出地址"
+
+  - pattern: "api/item/searchattr/byParentId"
+    methods:
+      - ALL
+    service: ":findViewByParentId"
+    desc: "根据上级id查询"
+
+  - pattern: "api/item/searchattr/byCategoryId"
+    methods:
+      - ALL
+    service: ":findAttributeViewByCategoryId"
+    desc: "根据categoryId查询attribute询"
+
+  - pattern: "api/item/searchattr/byCategoryIdAndKey"
+    methods:
+      - ALL
+    service: ":findAttributeViewName"
+    desc: "根据categoryId和attributeKey查询attribute"
+
+  - pattern: "api/groupstock/redisAddress"
+    methods:
+      - ALL
+    service: ":getExportPrepareStockUrl"
+    desc: "获得备货单导出地址"
+
+auths:
+  protectedList:
+    - pattern: "api/.*" # 正则表达式
+      roles:
+        - ADMIN
+        - LEADER
+        - BUZV
+        - MERCHANT
+        - AGENT
+        - GROUP
+        - OPERATION
+        - FINANCE
+    - pattern: "/admin/.*"
+      roles:
+        - ADMIN
+    - pattern: "/leader/.*"
+      roles:
+        - LEADER
+    - pattern: "/buzv/.*"
+      roles:
+        - BUZV
+    - pattern: "/agent/.*"
+      roles:
+        - AGENT
+    - pattern: "/vendor/.*"
+      roles:
+        - MERCHANT
+    - pattern: "/groupon/.*"
+      roles:
+        - GROUP
+    - pattern: "/operation/.*"
+      roles:
+        - OPERATION
+    - pattern: "/finance/.*"
+      roles:
+        - FINANCE
+  whiteList:
+    - pattern: "/assets/.*" # 正则表达式
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - GET
+    - pattern: "/login" # 正则表达式
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - ALL
+    - pattern: "/api/user/login" # 正则表达式
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - POST
+    - pattern: "/index" # 正则表达式
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - GET
+    - pattern: "/api/test/.*" # 正式库去掉 只是测试演示使用
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - ALL
+    - pattern: "/fake" # 正式库去掉 只是测试演示使用
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - ALL
+    - pattern: "/api/outerUser/.*" # 正则表达式
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - ALL
+    - pattern: "/api/groupbuy/outerUser/.*" # 正则表达式
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - ALL
+    - pattern: "/api/groupbuy/.*" # 正则表达式
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - ALL
+    - pattern: "/api/vom/.*" # 正则表达式
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - ALL
+    - pattern: "/api/out/.*" # 正则表达式
+      methods: # methods 多选: ALL, GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE
+        - ALL
+
+hrefs: # 可选，所有出现在这个 hash 里的值都会以 _HREF_ 为 key 注入渲染上下文
+  consoleHref: "http://****"

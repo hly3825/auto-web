@@ -1,0 +1,94 @@
+{{#component "js-comp vendor-items"}}
+<p class="components-title"><strong class="tab-name">商品列表(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form " novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">商品分类</label>
+        <select class="select" name="type">
+          <option value="" selected="">请选择</option>
+          <option {{#equals type "1"}}selected{{/equals}} value="1">冰箱</option>
+          <option {{#equals type "2"}}selected{{/equals}} value="2">洗衣机</option>
+          <option {{#equals type "3"}}selected{{/equals}} value="3">空调</option>
+          <option {{#equals type "4"}}selected{{/equals}} value="4">厨电</option>
+          <option {{#equals type "5"}}selected{{/equals}} value="5">热水器</option>
+          <option {{#equals type "6"}}selected{{/equals}} value="6">电视</option>
+          <option {{#equals type "7"}}selected{{/equals}} value="7">冷柜</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">商品名称</label>
+        <input name="itemName" value="{{itemName}}"type="text">
+      </span>
+      <span class="span3">
+        <label for="">商品代码</label>
+        <input name="itemCode" type="text" value="{{itemCode}}">
+      </span>
+      <span class="span1">
+        <button type="submit" class="btn btn-primary">筛选</button>
+        &nbsp;
+        <a href="/vendor/items">取消</a>
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p></p>
+<table id="table" class="table table-horizontal center-text">
+  <thead>
+    <tr>
+      <th width=20><input type="checkbox"></th>
+      <th width=260>商品简介
+      </th>
+      <th width=200>价格(元)</th>
+      <th width=150>状态</th>
+      <th width=200>创建时间</th>
+      <th width=100>规则编号</th>
+      <th width=100>规则名称</th>
+      <th width=100>佣金比例</th>
+      <th width=200>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each _DATA_.data }}
+    <tr>
+      <td><input type="checkbox"></td>
+      <td class="left-text">
+        <div class="item-logo">
+          <img class="item-img" src="{{imgFormat mainImage "small"}}"></img>
+        </div>
+        <div class="item-desc">
+          <span><a href="#" title="{{itemName}}">{{itemName}}</a></span>
+        </div>
+          <span>商品编码: {{itemCode}}</span><br>
+          <span>商品分类: {{#equals type "1"}}冰箱{{/equals}}
+                         {{#equals type "2"}}洗衣机{{/equals}}
+                         {{#equals type "3"}}空调{{/equals}}
+                         {{#equals type "4"}}厨电{{/equals}}
+                         {{#equals type "5"}}热水器{{/equals}}
+                         {{#equals type "6"}}电视{{/equals}}
+                         {{#equals type "7"}}冷柜{{/equals}}
+          </span>
+      </td>
+      <td><span class="currency">{{formatPrice price "Y" 2 }}<span></td>
+      <td>
+        {{#equals status "0"}}下架{{/equals}}
+        {{#equals status "1"}}上架{{/equals}}
+      </td>
+      <td>{{createdAt}}</td>
+      <td>{{ruleId}}</td>
+      <td>{{ruleType}}</td>
+      <td>
+        {{vendorCommission}}{{#if vendorCommission}}%{{/if}}
+      </td>
+      <td>
+        <a href="/vendor/itemdetail?id={{id}}">查看详情</a>&nbsp;&nbsp;
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="items-pagination" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}

@@ -1,0 +1,36 @@
+<div class="modal profitsItems" data-comp-path="pokeball" data-ruleid="{{ruleId}}" data-itemid="{{itemId}}">
+  <div class="modal-header">
+    <h2>设置关联规则</h2>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="40"></th>
+          <th width="80">规则编号</th>
+          <th width="180">规则名称</th>
+          <th width="180">规则类型</th>
+          <th width="180">佣金比例</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data.data }}
+          <tr>
+            <td><input type="checkbox" value="{{id}}" class="js-single-checkbox" {{#equals ../ruleId id }} checked{{/equals}}></td>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>
+              {{#equals type "1"}}按比例{{/equals}}
+              {{#equals type "2"}}满返现{{/equals}}
+            </td>
+            <td>{{vendorCommission}}{{#if vendorCommission}}%{{/if}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary btn-medium js-vendoritems-add">添加</button>
+    <button class="btn btn-info btn-medium close">返回</button>
+  </div>
+</div>

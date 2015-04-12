@@ -1,0 +1,36 @@
+{{#component "js-comp admin-leaderbuzv"}}
+<p class="components-title"><strong class="tab-name">总部下属小微信息(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="180">小微名称</th>
+      <th width="265">昵称</th>
+      <th width="265">手机号</th>
+      <th width="265">邮箱</th>
+      <th width="190">状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each _DATA_.data }}
+      <tr>
+        <td>{{name}}</td>
+        <td>{{nick}}</td>
+        <td>{{mobile}}</td>
+        <td>{{email}}</td>
+        <td>
+          {{#equals status "0"}}停用{{/equals}}
+          {{#equals status "1"}}启动{{/equals}}
+          {{#equals status "-1"}}冻结{{/equals}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p></p>
+<div>
+  <div class="inline-pagination align-right">
+    <div class="align-center"> <a href="/admin/leaders" class="btn btn-primary">返回</a> </div>
+    <div class="leaders-pagination" data-total="{{_DATA_.total}}"></div>
+  </div>
+</div>
+{{/component}}

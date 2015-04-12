@@ -1,0 +1,35 @@
+{{#component "js-comp common-changepassword"}}
+  <p class="components-title"><strong>修改密码</strong></p>
+  <div class="update-password-div">
+    <form class="form form-aligned update-pasword-form">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="old-password"><span class="required">*</span>旧密码:</label>
+          <input id="old-password" type="password" name="oldPassword" maxLength="16" pattern=".{6,16}" placeholder="旧密码" required>
+          <span class="note"><i>&times;</i> 用户旧密码</span>
+          <span class="note-error">请输入正确的密码(6-16位任意字符)</span>
+          <span class="note-error-empty">请输入密码</span>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="new-password"><span class="required">*</span>新密码:</label>
+          <input id="new-password" type="password" maxLength="16" name="newPassword" pattern=".{6,16}" placeholder="新密码" required>
+          <span class="note"><i>&times;</i> 用户新密码</span>
+          <span class="note-error">请输入正确的密码(6-16位任意字符)</span>
+          <span class="note-error-empty">请输入密码</span>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="confirm-password"><span class="required">*</span>确认新密码:</label>
+          <input id="confirm-password" type="password" maxLength="16" name="confirmPassword" placeholder="确认密码" required>
+          <span class="note"><i>&times;</i> 再次输入密码</span>
+          <span class="note-error">两次密码不相同</span>
+          <span class="note-error-empty">请输入确认密码</span>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-primary btn-medium" disabled>确认修改</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+{{/component}}

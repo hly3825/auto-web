@@ -1,0 +1,68 @@
+{{#component "js-comp admin-agents"}}
+<p class="components-title"><strong class="tab-name">代理商列表(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form " novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">状态</label>
+        <select name="status" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals status "0"}}selected{{/equals}} value="0">已保存</option>
+          <option {{#equals status "2"}}selected{{/equals}} value="2">审核通过</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">代理编码</label>
+        <input name="vendorCode" type="text" value="{{vendorCode}}">
+      </span>
+      <span class="span1">
+        <label for=""></label>
+        <button type="submit" class="btn btn-primary">筛选</button>
+        &nbsp;
+        <a href="/admin/agents">取消</a>
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p>
+  <a href="/admin/addagent" class="btn btn-primary">添加代理商</a>
+  <button class="btn btn-primary js-delete-agent">删除</button>
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="40"><input type="checkbox" class="js-select-all"></th>
+      <th width="165">代理商编码</th>
+      <th width="265">代理商名称</th>
+      <th width="290">地址</th>
+      <th width="190">电话</th>
+      <th width="190">状态</th>
+      <th width="190">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+   {{#each _DATA_.data }}
+    <tr>
+      <td><input type="checkbox" value="{{id}}" data-status="{{status}}" class="js-batch-checkbox"></td>
+      <td>{{vendorCode}}</td>
+      <td>{{vendorName}}</td>
+      <td>{{stree}}</td>
+      <td>{{phone}}</td>
+      <td data-status="{{status}}">
+        {{#equals status "0"}}已保存{{/equals}}
+        {{#equals status "2"}}审核通过{{/equals}}
+      </td>
+      <td>
+        <a href="/admin/addagent?id={{id}}" class="btn btn-primary">修改</a>&nbsp;&nbsp;
+        <a href="/admin/agentdetail?id={{id}}">查看详情</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="agents-pagination" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}
+

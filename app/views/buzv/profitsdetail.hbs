@@ -1,0 +1,135 @@
+{{#partial "realtitle"}}按订单维度佣金信息{{/partial}}
+{{#partial "realyBody"}}
+<p class="components-title"><strong class="tab-name">按订单维度佣金信息(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form " novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">订单状态</label>
+        <select class="select">
+          <option value="0" selected="">请选择</option>
+          <option value="1">服装</option>
+          <option value="2">食品</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">付款时间
+        </label>
+        <input class="input-small" type="text">
+        -
+        <input class="input-small" type="text">
+      </span>
+      <span class="span3">
+        <label for="">订单时间
+        </label>
+        <input class="input-small" type="text">
+        -
+        <input class="input-small" type="text">
+      </span>
+      <span class="span3">
+        <label for="">付款状态</label>
+        <select class="select">
+          <option value="0" selected="">请选择</option>
+          <option value="1">上架</option>
+          <option value="2">下架</option>
+        </select>
+      </span>
+    </fieldset>
+    <fieldset>
+      <span class="span3">
+        <label for="">商户名称</label>
+        <input type="text">
+      </span>
+      <span class="span3">
+        <label for="">买家名称</label>
+        <input type="text">
+      </span>
+       <span class="span3">
+        <label for="">收货地址</label>
+        <input type="text">
+      </span>
+      <span class="span3">
+        <label for="">付款类型</label>
+        <select class="select">
+          <option value="0" selected="">请选择</option>
+          <option value="1">服装</option>
+          <option value="2">食品</option>
+        </select>
+      </span>
+
+    </fieldset>
+    <fieldset>
+      <span class="span3">
+        <label for="">发货时间
+        </label>
+        <input class="input-small" type="text">
+        -
+        <input class="input-small" type="text">
+      </span>
+      <span class="span3">
+        <label for="">分润金额
+        </label>
+        <input class="input-small" type="text">
+        -
+        <input class="input-small" type="text">
+      </span>
+      <span class="span3">
+        <a href="/admin/itemadd" class="btn btn-primary">查看详情(这个需要吗)</a>
+        <button type="submit" class="btn btn-primary">筛选</button>
+        &nbsp;
+        <a href="#">取消</a>
+      </span>
+    </fieldset>
+
+  </form>
+</div>
+
+<p></p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="40"><input type="checkbox" name="" value="" placeholder=""></th>
+      <th width="80">订单ID</th>
+      <th width="90">商户代码</th>
+      <th width="165">订单金额(元)</th>
+      <th width="165">订单日期</th>
+      <th width="165">付款类型</th>
+      <th width="165">付款状态</th>
+      <th width="165">付款时间</th>
+      <th width="165">是否已将收益推送到bcc</th>
+      <th width="165">发货时间</th>
+      <th width="165">交易完成时间</th>
+      <th width="165">交易关闭时间</th>
+      <th width="165">支付渠道</th>
+      <th width="190">订单状态</th>
+      <th width="190">分润金额</th>
+      <th width="190">分润规则名称</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td><input type="checkbox" name="" value="" placeholder=""></td>
+        <td>1234</td>
+        <td>123456</td>
+        <td>1234</td>
+        <td>1234</td>
+        <td>1234</td>
+        <td>1234</td>
+        <td>1234</td>
+        <td>1234</td>
+        <td>1234</td>
+        <td>1234</td>
+        <td>1234</td>
+        <td>1234</td>
+        <td></td>
+        <td>1234</td>
+        <td>&nbsp;&nbsp;<a>查看详情</a></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+{{/partial}}
+{{> buzv/layout }}

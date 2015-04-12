@@ -1,0 +1,178 @@
+//
+// Colors
+// ----------------------------------------------------------------------------------
+
+// link colors
+$default-link-color: #4287c8;
+$default-hover-color: #f7ab00;
+
+// focus colors
+$default-focus-color: #129fea;
+
+// grayscale colors
+$default-body-color: #717171;
+$default-overlay-color: #999999;
+$default-note-color: #cccccc;
+$default-panel-color: #005fa7;
+$default-background-color: #f4f4f4;
+$default-border-color: #eeeeee;
+$default-darken-border-color: #dddddd;
+
+// various colors
+$default-danger-color: #cc003a;
+$default-primary-color: #303b86;
+$default-warning-color: #fdab39;
+$default-success-color: #729755;
+$default-info-color: #273485;
+
+//
+// Typography
+// ----------------------------------------------------------------------------------
+
+$default-font-family-sans-serif: tahoma, arial, "Hiragino Sans GB W3", \5b8b\4f53, sans-serif !default;
+$default-font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+$default-font-family: $default-font-family-sans-serif;
+
+$default-header-font-family: "Microsoft YaHei", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+
+$default-font-size: 12px;
+
+// border radius
+$default-border-radius: 4px;
+
+// caret size
+$caret-size: 5px;
+
+//
+// Buttons
+// ----------------------------------------------------------------------------------
+
+$btn-color: #717171;
+$btn-border: #ddd;
+$btn-background-color: #f4f4f4;
+
+$btn-primary-color: #fff;
+$btn-primary-border: #004981;
+$btn-primary-background-color: #005fa7;
+
+$btn-info-color: #717171;
+$btn-info-border: #ddd;
+$btn-info-background-color: #fff;
+
+$btn-danger-color: #fff;
+$btn-danger-border: #910428;
+$btn-danger-background-color: #c00031;
+
+$btn-disabled-color: #999;
+$btn-disabled-border: #ddd;
+$btn-disabled-background-color: #ddd;
+
+$btn-font-size: 12px;
+$btn-padding: 7px 10px;
+
+$btn-small-font-size: 12px;
+$btn-small-padding: 5px 10px;
+
+$btn-medium-font-size: 14px;
+$btn-medium-padding: 8px 20px;
+
+$btn-large-font-size: 18px;
+$btn-large-padding: 14px 40px;
+
+$btn-mini-font-size: 12px;
+$btn-mini-padding: 2px 4px;
+
+//
+// Buttons
+// ----------------------------------------------------------------------------------
+$input-search-color: $default-primary-color;
+
+//
+// Forms
+// ----------------------------------------------------------------------------------
+
+$form-aligned-label-width: 120px;
+$form-aligned-label-right: 15px;
+$form-aligned-controls-left: 138px;
+
+$input-large-width: 462px;
+$input-medium-width: 232px;
+$input-small-width: 70px;
+
+//
+// Navbars
+// ----------------------------------------------------------------------------------
+
+$navbar-width: 80px;
+$navbar-height: 40px;
+$navbar-padding: 10px;
+
+$navbar-condensed-font-size: 14px;
+$navbar-condensed-line-height: 40px;
+$navbar-condensed-padding: 0 18px;
+
+$navbar-top-width: auto;
+$navbar-top-height: 12px;
+$navbar-top-line-height: 30px;
+$navbar-top-padding: 9px 10px 9px 15px;
+
+$navbar-color: $default-danger-color;
+$navbar-primary-color: $default-panel-color;
+
+//
+// Tabs
+// ----------------------------------------------------------------------------------
+$tab-li-color: $default-panel-color;
+
+//
+// Carousels
+// ----------------------------------------------------------------------------------
+$carousel-indicator-size: 12px;
+$carousel-rounded-indicator-size: 25px;
+$carousel-squared-indicator-size: 25px;
+$carousel-indicator-color: $default-panel-color;
+
+//
+// Progresses
+// ----------------------------------------------------------------------------------
+$progress-step-height: 24px;
+$progress-bar-width: 130px;
+$progress-bar-height: 8px;
+$progress-step-active-color: $default-danger-color;
+$progress-step-color: $default-note-color;
+$progress-step-into-width: 128px;
+
+//
+// Paginations
+// ----------------------------------------------------------------------------------
+
+$pagination-current-color: $default-panel-color;
+$pagination-border-color: $default-border-color;
+$pagination-hover-color: $default-note-color;
+$pagination-danger-current-color: $default-panel-color !default;
+$pagination-unbordered-current-color: $default-hover-color !default;
+
+//
+// Modals
+// ----------------------------------------------------------------------------------
+$modal-header-color: $default-panel-color;
+$modal-image-list-border-color: $default-panel-color;
+
+//
+// Lists
+// ----------------------------------------------------------------------------------
+$list-border-color: $default-panel-color;
+
+//
+// Misc
+// ----------------------------------------------------------------------------------
+$badge-color: #fff;
+$badge-background-color: $default-danger-color;
+$badge-primary-color: #fff;
+$badge-primary-background-color: $default-panel-color;
+$block-color: $default-body-color;
+$block-background-color: $default-background-color;
+$block-primary-color: $default-body-color;
+$block-primary-background-color: #f1f5fe;
+$heading-title-color: $default-panel-color;
+$suggestion-li-color: $default-panel-color;

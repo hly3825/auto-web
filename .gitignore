@@ -1,0 +1,9 @@
+fonts/
+vendor/
+!app/**/vendor/
+public/
+.sass-cache
+.DS_Store
+icons.scss
+Linnerfile
+.idea/

@@ -1,0 +1,95 @@
+{{#component "js-comp buzv-vendorprofits"}}
+<p class="components-title"><strong class="tab-name">商户佣金信息(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form buzv-vendorprofits-form" novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">状态</label>
+        <select name="vendorStatus" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals vendorStatus "0"}}selected{{/equals}} value="0">已保存</option>
+          <option {{#equals vendorStatus "-1"}}selected{{/equals}} value="-1">审核不通过</option>
+          <option {{#equals vendorStatus "1"}}selected{{/equals}} value="1">审核中</option>
+          <option {{#equals vendorStatus "2"}}selected{{/equals}} value="2">审核通过</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">时间区间</label>
+        <select name="periodType" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals buildPeriodType "2"}}selected{{/equals}} value="2" >最近一个月</option>
+          <option {{#equals periodType "1"}}selected{{/equals}} value="1" >最近7天</option>
+          <option {{#equals periodType "3"}}selected{{/equals}} value="3" >最近三个月</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">付款时间
+        </label>
+        <input id="payDateStart" name="commissionPayDateStart" class="input-small" type="text" value="{{commissionPayDateStart}}">
+        -
+        <input id="payDateEnd" name="commissionPayDateEnd" class="input-small" type="text" value="{{commissionPayDateEnd}}">
+      </span>
+      <span class="span1">
+        <label for=""></label>
+        <button type="submit" class="btn btn-primary">筛选</button>
+        &nbsp;
+        <a href="/buzv/vendorprofits">取消</a>
+      </span>
+    </fieldset>
+    <fieldset>
+      <span class="span3">
+        <label for="">商户编码</label>
+        <input name="vendorCode" type="text" value="{{vendorCode}}">
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p>
+  <button class="btn btn-primary js-export">导出佣金</button>
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="40"><input type="checkbox"></th>
+      <th width="165">商户编码</th>
+      <th width="105">商户名称</th>
+      <th width="190">电话</th>
+      <th width="195">税务登记号</th>
+      <th width="190">状态</th>
+      <th width="190">分润金额（元）</th>
+      <th width="250">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each _DATA_.data}}
+      <tr>
+        <td><input type="checkbox" value="{{vendorCode}}"></td>
+        <td>{{vendorCode}}</td>
+        <td>{{vendorName}}</td>
+        <td>{{phone}}</td>
+        <td>{{taxCode}}</td>
+        <td>
+          {{#equals status "0"}}已保存{{/equals}}
+          {{#equals status "-1"}}审核不通过{{/equals}}
+          {{#equals status "1"}}审核中{{/equals}}
+          {{#equals status "2"}}审核通过{{/equals}}
+        </td>
+        <td>
+          {{#if commission}}
+            {{formatPrice commission "Y" 2 }}
+          {{else}}
+            0.00
+          {{/if}}
+        </td>
+        <td>
+          <a href="/buzv/orders?vendorCode={{vendorCode}}">查看商户详细订单数据</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="vendorprofits-pagination" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}

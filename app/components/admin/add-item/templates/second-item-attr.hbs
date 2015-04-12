@@ -1,0 +1,12 @@
+<div class="single-attribute">
+  <br>
+  <label><span class="required">*</span>二级属性:</label>
+  <p class="secondLevel-block itemattr-style">
+  {{#each itemData}}
+    <span class="itemattr-color">
+      <input name="secondLevel" class="seconeLevel js-changenext-attr" type="checkbox" data-parentid="{{parentId}}"data-id="{{id}}" value="{{attributeKey}}" data-categoryid="{{categoryId}}" id="attributeKey-{{id}}">
+      <label for="attributeKey-{{id}}">{{attributeKey}}</label>
+    </span>
+  {{/each}}
+  </p>
+</div>

@@ -1,0 +1,31 @@
+.admin-updateitem{
+  .item-detail{
+    width: 800px;
+    display: inline-block;
+    .text-tools{
+      .text-tool-iframe {
+        border: 1px solid #eee!important;
+        width: 780px!important;
+      }
+      .image-selecter,.createLink-selecter {
+        width: 780px!important;
+        label{
+          width: 380px !important;
+        }
+      }
+    }
+  }
+  .itemattr-color{
+    margin: 2px;
+    padding: 5px;
+    border: 1px solid #ecf0f1;
+    display: inline-block;
+    label{
+      width: auto!important;
+    }
+  }
+  .itemattr-style{
+    width: 80%;
+    margin-left: 135px;
+  }
+}

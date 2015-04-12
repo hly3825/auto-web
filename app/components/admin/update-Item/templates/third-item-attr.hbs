@@ -1,0 +1,12 @@
+<div class="single-attribute">
+  <br>
+  <label class="third-label-level" data-attrkey="{{attributeKey}}"><span class="required">*</span>{{attributeKey}}:</label>
+  <p class="thirdLevel-block itemattr-style">
+  {{#each itemData}}
+    <span class="itemattr-color">
+      <input name="thirdLevel-{{../attributeKey}}" class="thirdLevel js-changenext-attr" type="radio" data-id="{{id}}" data-categoryid="{{categoryId}}" data-attrkey="{{../attributeKey}}" data-attrname="{{attributeName}}" id="attributeKey-{{id}}">
+      <label for="attributeKey-{{id}}">{{attributeName}}</label>
+    </span>
+  {{/each}}
+  </p>
+</div>

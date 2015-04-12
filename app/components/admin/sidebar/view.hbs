@@ -1,0 +1,71 @@
+{{#component "js-comp admin-sidebar sidebar"}}
+  <ul class="sidebar-ul">
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;商品管理</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item
+        {{#equals _PATH_ "admin/items"}}active{{/equals}}
+        {{#equals _PATH_ "admin/itemdetail"}}active{{/equals}}
+        {{#equals _PATH_ "admin/updateItem"}}active{{/equals}}
+        {{#equals _PATH_ "admin/addItem"}}active{{/equals}}
+        "><div class="text-link"><a href="/admin/items" class="inner-item-a">商品列表</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item
+        {{#equals _PATH_ "admin/profitsRule"}}active{{/equals}}
+        {{#equals _PATH_ "admin/addrule"}}active{{/equals}}
+        "><div class="text-link"><a href="/admin/profitsRule" class="inner-item-a">规则列表</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+        <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;总部管理</strong></a>
+        <ul class="inner sidebar-inner-ul">
+          <li class="inner-item
+          {{#equals _PATH_ "admin/leaders"}}active{{/equals}}
+          {{#equals _PATH_ "admin/leaderbuzv"}}active{{/equals}}
+          "><div class="text-link"><a href="/admin/leaders" class="inner-item-a">总部信息</a></div><span class="corner"></span><span class="wide"></span></li>
+        </ul>
+    </li>
+    <li class="sidebar-li">
+        <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;小微管理</strong></a>
+        <ul class="inner sidebar-inner-ul">
+          <li class="inner-item {{#equals _PATH_ "admin/buzv"}}active{{/equals}}"><div class="text-link"><a href="/admin/buzv" class="inner-item-a">小微信息</a></div><span class="corner"></span><span class="wide"></span></li>
+        </ul>
+    </li>
+    <li class="sidebar-li">
+        <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;商户管理</strong></a>
+        <ul class="inner sidebar-inner-ul">
+          <li class="inner-item
+          {{#equals _PATH_ "admin/checkvendor"}}active{{/equals}}
+          {{#equals _PATH_ "admin/vendordetail"}}active{{/equals}}
+          "><div class="text-link"><a href="/admin/checkvendor" class="inner-item-a">商户信息</a></div><span class="corner"></span><span class="wide"></span></li>
+        </ul>
+    </li>
+    <li class="sidebar-li">
+        <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;代理商管理</strong></a>
+        <ul class="inner sidebar-inner-ul">
+          <li class="inner-item
+          {{#equals _PATH_ "admin/agents"}}active{{/equals}}
+          {{#equals _PATH_ "admin/addagent"}}active{{/equals}}
+          {{#equals _PATH_ "admin/agentdetail"}}active{{/equals}}
+          "><div class="text-link"><a href="/admin/agents" class="inner-item-a">代理商信息</a></div><span class="corner"></span><span class="wide"></span></li>
+        </ul>
+    </li>
+
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;订单管理</strong></a>
+      <ul class="inner sidebar-inner-ul">
+
+        <li class="inner-item
+        {{#equals _PATH_ "admin/orders"}}active{{/equals}}
+        {{#equals _PATH_ "admin/orderdetail"}}active{{/equals}}
+        "><div class="text-link"><a href="/admin/orders" class="inner-item-a">订单列表</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;个人资料</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item {{#equals _PATH_ "admin/changepassword"}}active{{/equals}}"><div class="text-link"><a href="/admin/changepassword" class="inner-item-a">修改个人密码</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item {{#equals _PATH_ "admin/personinfo"}}active{{/equals}}"><div class="text-link"><a href="/admin/personinfo" class="inner-item-a">查看个人信息</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+  </ul>
+{{/component}}

@@ -1,0 +1,71 @@
+{{#component "js-comp leader-buzv"}}
+<p class="components-title"><strong class="tab-name">小微信息(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form " novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">状态</label>
+        <select name="status" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals status "0"}}selected{{/equals}} value="0">停用</option>
+          <option {{#equals status "1"}}selected{{/equals}} value="1">启动</option>
+          <option {{#equals status "-1"}}selected{{/equals}} value="-1">冻结</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">小微名称</label>
+        <input name="name" type="text">
+      </span>
+      <span class="span6">
+        <button type="submit" class="btn btn-primary">筛选</button>
+        &nbsp;
+        <a href="/leader/buzv">取消</a>
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p>
+  <div class="hide">
+    <button type="submit" class="btn btn-primary hide">冻结</button>
+  </div>
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="40"><input type="checkbox" class="js-select-all"></th>
+      <th width="180">小微名称</th>
+      <th width="265">昵称</th>
+      <th width="265">手机号</th>
+      <th width="265">邮箱</th>
+      <th width="125">所属小微数量</th>
+      <th width="190">状态</th>
+      <th width="210">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each _DATA_.data }}
+      <tr>
+        <td><input type="checkbox" value="{{id}}" class="js-batch-checkbox"></td>
+        <td>{{name}}</td>
+        <td>{{nick}}</td>
+        <td>{{mobile}}</td>
+        <td>{{email}}</td>
+        <td> <a href="/leader/vendors?buzvId={{id}}">{{vendorNums}}</a> </td>
+        <td>
+          {{#equals status "0"}}停用{{/equals}}
+          {{#equals status "1"}}启动{{/equals}}
+          {{#equals status "-1"}}冻结{{/equals}}
+        </td>
+        <td>
+          <a href="/leader/orderprofits?buzvId={{id}}">查看订单佣金信息</a>
+          <a href="/leader/vendorprofits?buzvId={{id}}">查看商户佣金信息</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="leaders-pagination" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}

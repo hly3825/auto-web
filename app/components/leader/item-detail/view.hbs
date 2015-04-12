@@ -1,0 +1,68 @@
+{{#component "js-comp leader-itemdetail"}}
+<p class="components-title"><strong class="tab-name">商品详细信息</strong></p>
+{{#with _DATA_}}
+<form  action="/api/users" method="POST" class="form form-aligned" novalidate="true">
+  <fieldset>
+    <div class="control-group control-group-2">
+      <label for="">产品代码:</label>
+      <span class="content">{{item.itemCode}}</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for="">产品名称:</label>
+      <span class="content">{{item.itemName}}</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for="">销售价格:</label>
+      <span class="content">{{item.price}}(元)</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for="">限购数量:</label>
+      <span class="content">{{item.buyLimit}}台</span>
+    </div>
+    <div class="control-group" style="width:900px;">
+      <label class="pull-left" for="">产品图片:</label>
+      <img class="img pull-left" src="{{imgFormat item.mainImage "big"}}" alt="产品主图片"/>
+      {{#if itemDetail.image1}}
+        <img class="img pull-left" src="{{imgFormat itemDetail.image1 "big"}}" alt="产品图片1"/>
+      {{/if}}
+      {{#if itemDetail.image2}}
+        <img class="img pull-left" src="{{imgFormat itemDetail.image2 "big"}}" alt="产品图片2"/>
+      {{/if}}
+      {{#if itemDetail.image3}}
+        <img class="img pull-left" src="{{imgFormat itemDetail.image3 "big"}}" alt="产品图片3"/>
+      {{/if}}
+      {{#if itemDetail.image4}}
+        <img class="img pull-left" src="{{imgFormat itemDetail.image4 "big"}}" alt="产品图片4"/>
+      {{/if}}
+      <div class="clearfix"></div>
+    </div>
+    <div class="control-group control-group-2">
+      <label for="">产品类别:</label>
+      <span class="content">
+        {{#equals item.type "1"}}冰箱{{/equals}}
+        {{#equals item.type "2"}}洗衣机{{/equals}}
+        {{#equals item.type "3"}}空调{{/equals}}
+        {{#equals item.type "4"}}厨电{{/equals}}
+        {{#equals item.type "5"}}热水器{{/equals}}
+        {{#equals item.type "6"}}电视{{/equals}}
+        {{#equals item.type "7"}}冷柜{{/equals}}&nbsp;
+      </span>
+    </div>
+    {{#each itemAttributeList}}
+    <div class="control-group control-group-2">
+      <label for="">{{attributeKey}}:</label>
+      <span class="content">{{attributeName}}</span>
+    </div>
+    {{/each}}
+    <div class="control-group">
+      <label for="">产品详情:</label>
+      <span class="content">{{{itemDetail.packingList}}}</span>
+    </div>
+    <hr>
+    <div class="align-center">
+        <a href="/leader/items" class="btn btn-primary">返回</a>
+    </div>
+  </fieldset>
+</form>
+{{/with}}
+{{/component}}

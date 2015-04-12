@@ -1,0 +1,43 @@
+{{#component "js-comp common-personinfo"}}
+<p class="components-title"><strong class="tab-name">个人信息</strong></p>
+<div class="profile-content">
+  <div class="profile-body">
+    <form class="form-aligned form" id="user-profile-form">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label name">用户名：</label>
+          <input type="text" name="name" class="input-medium" value="{{_USER_.name}}" readOnly>
+        </div>
+        <div class="control-group">
+          <label class="control-label">手机号：</label>
+          <input type="text" id="inputMobile" name="mobile" class="input-medium" value="{{_DATA_.mobile}}" readOnly>
+        </div>
+        <div class="control-group">
+          <label class="control-label">真实姓名：</label>
+          <input type="text" name="realName" class="input-medium" value="{{_DATA_.nick}}" readOnly>
+        </div>
+        <div class="control-group">
+          <label class="control-label">性别：</label>
+          {{#equals _DATA_.sex 1}}
+            男 &nbsp;&nbsp;&nbsp;&nbsp;
+          {{/equals}}
+          {{#equals _DATA_.sex 2}}
+            女
+          {{/equals}}
+        </div>
+        <div class="control-group">
+          <label class="control-label">绑定邮箱：</label>
+          {{#if _DATA_.email}}
+            <input type="text" readOnly class="input-medium" value="{{_DATA_.email}}">&nbsp;&nbsp;
+          {{/if}}
+        </div>
+        <div class="control-group">
+          <div class="controls">
+
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+{{/component}}

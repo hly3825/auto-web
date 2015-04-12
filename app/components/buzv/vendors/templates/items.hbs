@@ -1,0 +1,72 @@
+<div class="modal vendorsItem" data-comp-path="pokeball" data-id="{{venderIds}}">
+  <div class="modal-header">
+    <a href="#" class="close">×</a>
+    <h2>
+      {{#if type}}
+        查看商品
+      {{else}}
+        添加商品
+      {{/if}}
+    </h2>
+  </div>
+  <div class="modal-body">
+    <table id="table" class="table table-horizontal center-text">
+      <thead>
+        <tr>
+          {{#if type}}
+
+          {{else}}
+            <th width="40"><input type="checkbox" value="产品ID" class="js-vendor-items"></th>
+          {{/if}}
+          <th width=250>商品简介</th>
+          <th width=200>价格(元)</th>
+          <th width=150>状态</th>
+          <th width=200>创建时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data }}
+        <tr>
+          {{#if ../type}}
+
+          {{else}}
+            <td><input class="js-batch-checkbox" type="checkbox" value="{{id}}" {{#equals isSelected "Y"}} checked{{/equals}} ></td>
+          {{/if}}
+          <td class="left-text">
+            <div class="item-logo">
+              <img class="item-img" src="{{imgFormat mainImage "small"}}"></img>
+            </div>
+            <div class="item-desc">
+              <span><a href="#" title="{{itemName}}">{{itemName}}</a></span>
+            </div>
+              <span>商品编码: {{itemCode}}</span><br>
+              <span>商品分类: {{#equals type "1"}}冰箱{{/equals}}
+                             {{#equals type "2"}}洗衣机{{/equals}}
+                             {{#equals type "3"}}空调{{/equals}}
+                             {{#equals type "4"}}厨电{{/equals}}
+                             {{#equals type "5"}}热水器{{/equals}}
+                             {{#equals type "6"}}电视{{/equals}}
+                             {{#equals type "7"}}冷柜{{/equals}}
+              </span>
+          </td>
+          <td><span class="currency">{{formatPrice price "Y" 2 }}<span></td>
+          <td>
+            {{#equals status "0"}}下架{{/equals}}
+            {{#equals status "1"}}上架{{/equals}}
+          </td>
+          <td>{{createdAt}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    {{#if type}}
+
+    {{else}}
+      <button class="btn btn-primary btn-medium js-vendoritems-add">添加</button>
+    {{/if}}
+    &nbsp;
+    <button class="btn btn-info btn-medium close">返回</button>
+  </div>
+</div>

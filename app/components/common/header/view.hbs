@@ -1,0 +1,11 @@
+{{#component "header js-comp"}}
+<div class="navbar navbar-top">
+  <div class="navbar-collapse">
+    <div class="navbar-header">
+      <span>{{#if _USER_}}{{_USER_.nickName}},{{/if}}欢迎来到商圈小微系统!</span>
+      &nbsp;&nbsp;
+      {{#if _USER_}}<a href="/api/user/logout">退出</a>{{/if}}
+    </div>
+  </div>
+</div>
+{{/component}}

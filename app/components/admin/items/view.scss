@@ -1,0 +1,19 @@
+.admin-items{
+  .btn-primary{
+    margin-bottom: 10px;
+  }
+  .js-search{
+    margin-bottom: 0px;
+  }
+}
+.modal .item-import-textarea{
+  width:500px;
+  height:150px;
+}
+.profitsItems.modal{
+  .modal-body{
+    min-height: 100px;
+    max-height: 200px;
+    overflow: auto;
+  }
+}

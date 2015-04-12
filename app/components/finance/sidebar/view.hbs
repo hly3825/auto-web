@@ -1,0 +1,16 @@
+{{#component "js-comp groupon-sidebar sidebar"}}
+  <ul class="sidebar-ul">
+    <li class="sidebar-li">
+      <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;财务团购管理</strong></a>
+      <ul class="inner sidebar-inner-ul">
+        <li class="inner-item
+        {{#equals _PATH_ "finance/dashboard"}}active{{/equals}}
+        "><div class="text-link"><a href="/finance/dashboard" class="inner-item-a">财务订单管理</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item
+        {{#equals _PATH_ "finance/ordersearch"}}active{{/equals}}
+         {{#equals _PATH_ "finance/orderdetail"}}active{{/equals}}
+        "><div class="text-link"><a href="/finance/ordersearch" class="inner-item-a">财务订单查询</a></div><span class="corner"></span><span class="wide"></span></li>
+      </ul>
+    </li>
+  </ul>
+{{/component}}

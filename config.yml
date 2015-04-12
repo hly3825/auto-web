@@ -1,0 +1,114 @@
+paths:
+  public: "public"
+groups:
+  scripts:
+    paths:
+      - "app/scripts"
+    concat:
+      "/assets/scripts/app.js": "app/{scripts,components}/**/*.{js,coffee}"
+      "/assets/scripts/vendor.js": "vendor/*.{js,coffee}"
+      "/assets/scripts/ie8.js": "vendor/ie/*.{js,coffee}"
+    copy:
+      "/assets/scripts": "vendor/holder/*.js"
+    order:
+      - "vendor/pokeball.js"
+      - "vendor/highcharts.js"
+      - "..."
+      - "app/scripts/app.coffee"
+  styles:
+    paths:
+      - "app/styles"
+    concat:
+      "/assets/styles/vendor.css": "vendor/**/*.{css,scss,sass}"
+      "/assets/styles/app.css": "{app/styles/app.{css,scss,sass},app/styles/icons.scss,app/components/**/view.{css,scss,sass}}"
+    order:
+      - "vendor/pokeball.css"
+      - "vendor/base.css"
+      - "..."
+  images:
+    paths:
+      - "app/images"
+    sprite:
+      "../app/styles/icons.scss": "app/**/images/*.png"
+    copy:
+      "/assets/images/": "{app/images/**/*.jpg,app/images/other-images/*.png}"
+  views:
+    paths:
+      - app/views
+    copy:
+      "/views": "app/views/**/*.hbs"
+      "/components/": "app/components/**/view.hbs"
+  files:
+    paths:
+      - "app/files"
+    copy:
+      "/": "app/files/*"
+    tar:
+      "components.tar.gz": "{app/components/admin/{add-agent,agent-detail,buzv,item-detail,leader-buzv,order-detail,profits-Rule,update-Item,add-rule,agents,check-vendor,items,leaders,orders,vendor-detail}/**/*,app/components/agent/{order-detail,order-profit-detail,order-profits,orders,person-info,profits,vendor-detail,vendor-profits,vendors}/**/*,app/components/buzv/{add-vendor,item-detail,order-detail,order-profits,pay,pay-detail-now,vendor-profits,dashboard,items,order-profit-detail,orders,pay-detail-history,profits-Rule,vendor-detail,vendors}/**/*,app/components/common/{change-password,login,person-info,text-tool}/**/*,app/components/leader/{buzv,check-pay,item-detail,order-detail,order-profits,profits-Rule,vendor-detail,vendors,buzv-report,check-pay-detail-history,items,order-profit-detail,orders,vendor-profits}/**/*,app/components/vendor/{item-detail,items,order-detail,order-profit-detail,orders,person-info,profits,summary,vendor-profits}/**/*}"
+  templates:
+    paths:
+      - "app/components"
+    precompile:
+      "../vendor/templates.js": "app/components/**/templates/*.hbs"
+  fonts:
+    paths:
+      - "app/fonts"
+    copy:
+      "/assets/fonts": "app/fonts/*"
+modules:
+  wrapper: cmd
+  ignored: vendor/**/*
+  definition: /scripts/app.js
+sprites:
+  selector: ".icon-"
+  path: "/assets/images/"
+  url: "/assets/images/"
+revision:
+  files:
+    - /views/layout_base.hbs
+    - /views/login.hbs
+notification: true
+bundles:
+  # "pokeball.js":
+  #   version: "master"
+  #   url: "http://registry.aixforce.com/packages/pokeball/master/pokeball.js"
+  # "highcharts.js":
+  #   version: "4.0.1"
+  #   url: "http://code.highcharts.com/highcharts.src.js"
+  # "highcharts-more.js":
+  #   version: "4.0.1"
+  #   url: "http://code.highcharts.com/highcharts-more.src.js"
+  # "greatball.css":
+  #   version: "master"
+  #   url: "http://registry.aixforce.com/packages/pokeball/master/greatball.css"
+  # "holder/holder.js":
+  #   version: "master"
+  #   url: "https://raw.githubusercontent.com/imsky/holder/master/holder.js"
+  # "ie/html5shiv.js":
+  #   version: master
+  #   url: "https://raw.githubusercontent.com/aFarkas/html5shiv/master/src/html5shiv.js"
+  # "../app/fonts/FontAwesome.otf":
+  #   version: master
+  #   url: "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/fonts/FontAwesome.otf"
+  # "../app/fonts/fontawesome-webfont.eot":
+  #   version: master
+  #   url: "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/fonts/fontawesome-webfont.eot"
+  # "../app/fonts/fontawesome-webfont.svg":
+  #   version: master
+  #   url: "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/fonts/fontawesome-webfont.svg"
+  # "../app/fonts/fontawesome-webfont.ttf":
+  #   version: master
+  #   url: "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/fonts/fontawesome-webfont.ttf"
+  # "../app/fonts/fontawesome-webfont.woff":
+  #   version: master
+  #   url: "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/fonts/fontawesome-webfont.woff"
+  # "font-awesome.css":
+  #   version: master
+  #   url: "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/css/font-awesome.css"
+  # "wysihtml5.min.js":
+  #   version: "0.3"
+  #   url: "https://raw.githubusercontent.com/xing/wysihtml5/master/dist/wysihtml5-0.3.0.min.js"
+  # "wysihtml5-advanced.js":
+  #   version: "0.3"
+  #   url: "https://raw.githubusercontent.com/xing/wysihtml5/master/parser_rules/advanced.js"
+

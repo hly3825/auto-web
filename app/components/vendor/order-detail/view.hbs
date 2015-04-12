@@ -1,0 +1,141 @@
+{{#component "js-comp vendor-orderdetail"}}
+<p class="components-title"><strong class="tab-name">订单详情</strong></p>
+<div class="block block-show">
+  <form class="form" action="/api/users" method="POST" class="form" novalidate="true">
+    <fieldset>
+      <div class="control-group control-group-2">
+        <label for="">订单编号:</label>
+        <span class="content"> {{#if _DATA_.order.orderNo}} {{_DATA_.order.orderNo}} {{else}} &nbsp; {{/if}}</span>
+      </div>
+      <div class="control-group control-group-2">
+        <label for="">订单金额(元):</label>
+        <span class="content">{{#if _DATA_.order.amt}} {{formatPrice _DATA_.order.amt "Y" 2 }} {{else}} &nbsp; {{/if}}</span>
+      </div>
+      <div class="control-group control-group-2">
+        <label for="">订单日期:</label>
+        <span class="content">{{#if _DATA_.order.orderDate}} {{formatDate _DATA_.order.orderDate }} {{else}} &nbsp; {{/if}}</span>
+      </div>
+      <div class="control-group control-group-2">
+        <label for="">订单状态:</label>
+        <span class="content">
+          {{#if _DATA_.order.status}}
+            {{#equals _DATA_.order.status "0"}}已提交{{/equals}}
+            {{#equals _DATA_.order.status "1"}}卖家已发货{{/equals}}
+            {{#equals _DATA_.order.status "2"}}交易完成{{/equals}}
+            {{#equals _DATA_.order.status "-1"}}买家关闭{{/equals}}
+            {{#equals _DATA_.order.status "-2"}}卖家关闭{{/equals}}
+            {{#equals _DATA_.order.status "-3"}}卖家退款{{/equals}}
+            {{#equals _DATA_.order.status "9"}}订单作废{{/equals}}
+          {{else}}
+            &nbsp;
+          {{/if}}
+        </span>
+      </div>
+      <div class="control-group control-group-2">
+        <label for="">买家手机:</label>
+        <span class="content">
+          {{#if _DATA_.order.buyerAcct}}
+            {{_DATA_.order.buyerAcct}}
+          {{else}}
+            &nbsp;
+          {{/if}}
+        </span>
+      </div>
+      <div class="control-group control-group-2">
+        <label for="">付款类型:</label>
+        <span class="content">
+          {{#if _DATA_.order.payStatus}}
+            {{#equals _DATA_.order.payStatus "0"}}未付款{{/equals}}
+            {{#equals _DATA_.order.payStatus "1"}}已付款{{/equals}}
+          {{else}}
+            &nbsp;
+          {{/if}}
+        </span>
+      </div>
+      <div class="control-group control-group-2">
+        <label for="">付款时间:</label>
+        <span class="content">
+          {{#if _DATA_.order.payAt}}
+            {{formatDate _DATA_.order.payAt}}
+          {{else}}
+            &nbsp;
+          {{/if}}
+        </span>
+      </div>
+      <div class="control-group control-group-2">
+        <label for="">完成时间:</label>
+        <span class="content">
+          {{#if _DATA_.order.doneAt}}
+            {{formatDate _DATA_.order.doneAt}}
+          {{else}}
+            &nbsp;
+          {{/if}}
+        </span>
+      </div>
+      <div class="control-group control-group-2">
+        <label for="">关闭时间:</label>
+        <span class="content">
+          {{#if _DATA_.order.canceledAt}}
+            {{formatDate _DATA_.order.canceledAt}}
+          {{else}}
+            &nbsp;
+          {{/if}}
+        </span>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="216">商品基本信息</th>
+      <th width="100">购买数量</th>
+      <th width="130">金额(元)</th>
+      <th width="110">订单状态</th>
+      <th width="180">订单日期</th>
+      <th width="297">商品描述</th>
+    </tr>
+  </thead>
+</table>
+<br>
+{{#each _DATA_.orderDetailList}}
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td colspan="12" class="left-text td-heading">
+        子订单编号: {{id}}
+      </td>
+    </tr>
+    <tr>
+      <td class="left-text" width="196">
+        {{itemDesc}}<br>
+        商品类别: {{#equals type "1"}}冰箱{{/equals}}
+                 {{#equals type "2"}}洗衣机{{/equals}}
+                 {{#equals type "3"}}空调{{/equals}}
+                 {{#equals type "4"}}厨电{{/equals}}
+                 {{#equals type "5"}}热水器{{/equals}}
+                 {{#equals type "6"}}电视{{/equals}}
+                 {{#equals type "7"}}冷柜{{/equals}}<br>
+        商品编码: {{itemCode}}
+      </td>
+      <td width="80">{{quantity}}件</td>
+      <td width="110">{{formatPrice amt "Y" 2 }}</td>
+      <td width="90">
+        {{#equals status "-1"}}取消{{/equals}}
+        {{#equals status "1"}}正常{{/equals}}
+      </td>
+      <td width="160">{{formatDate orderDate}}</td>
+      <td width="277">
+        {{itemDescribe}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+{{/each}}
+<hr>
+<div class="align-center">
+  <a href="/vendor/orders" class="btn btn-primary">返回</a>
+</div>
+{{/component}}

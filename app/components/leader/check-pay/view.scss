@@ -1,0 +1,16 @@
+.audit-checkpay.modal{
+  .modal-body{
+    padding: 40px;
+    min-height: 150px;
+    height: auto !important;
+  }
+  .control-group{
+    label{
+      width: 80px;
+    }
+    .check-apply{
+      height: 90px;
+      width: 260px;
+    }
+  }
+}

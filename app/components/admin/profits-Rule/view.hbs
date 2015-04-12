@@ -1,0 +1,74 @@
+{{#component "js-comp admin-profitsrule"}}
+<p class="components-title"><strong class="tab-name">分润规则(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search js-add-rule">
+  <form class="form " novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">规则类型</label>
+        <select name="type" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals type "1"}}selected{{/equals}} value="1">按比例</option>
+          <option {{#equals type "2"}}selected{{/equals}} value="2">满返现</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">规则状态</label>
+        <select name="status" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals status "1"}}selected{{/equals}} value="1">可用</option>
+          <option {{#equals status "0"}}selected{{/equals}} value="0">不可用</option>
+        </select>
+      </span>
+      <span class="span1">
+        <button type="submit" class="btn btn-primary">筛选</button>
+        &nbsp;
+        <a href="/admin/profitsRule">取消</a>
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p>
+  <a href="/admin/addrule" class="btn btn-primary">添加</a>
+  <a class="btn btn-primary js-batch-freeze">启用/停用规则</a>
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="40"><input type="checkbox" class="js-select-all"></th>
+      <th width="80">规则编号</th>
+      <th width="190">规则名称</th>
+      <th width="190">规则类型</th>
+      <th width="290">规则状态</th>
+      <th width="155">佣金比例</th>
+      <th width="355">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each _DATA_.data}}
+      <tr>
+        <td><input type="checkbox" value="{{id}}" class="js-batch-checkbox"></td>
+        <td>{{id}}</td>
+        <td>{{name}}</td>
+        <td>
+          {{#equals type "1"}}按比例{{/equals}}
+          {{#equals type "2"}}满返现{{/equals}}
+        </td>
+        <td>
+          {{#equals status "1"}}可用{{/equals}}
+          {{#equals status "0"}}不可用{{/equals}}
+        </td>
+        <td>{{vendorCommission}}{{#if vendorCommission}}%{{/if}}</td>
+        <td>
+          <a href="/admin/addrule?id={{id}}" class="btn btn-primary" data-id="{{id}}">修改规则</a>
+          <button class="btn btn-primary js-batch-add-items" data-id="{{id}}">添加商品</button>
+          <a href="javascript:void(0)" class="js-search-items" data-id="{{id}}">查看已设置商品</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="profitsrule-pagination" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}

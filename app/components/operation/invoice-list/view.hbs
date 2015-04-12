@@ -1,0 +1,86 @@
+{{#component "js-comp operation-invoice"}}
+<p class="components-title"><strong class="tab-name">运营发票查询(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form operation-invoice-form" novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">订单号</label>
+        <input name="orderId" type="text" value="{{orderId}}">
+      </span>
+      <span class="span3">
+        <label for="">发票状态</label>
+        <select name="status" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals status "1"}}selected{{/equals}} value="1">正常</option>
+          <option {{#equals status "2"}}selected{{/equals}} value="2">作废</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">发票日期
+        </label>
+        <input id="beginTime" name="beginTime" class="input-small" type="text" value="{{beginTime}}">
+        -
+        <input id="endTime" name="endTime" class="input-small" type="text" value="{{endTime}}">
+      </span>
+      <span class="span1 last">
+        <button type="submit" class="btn btn-primary js-search">筛选</button>
+        &nbsp;
+        <a href="/operation/invoicelist">取消</a>
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p>
+  <button class="btn btn-primary js-export-searchinvoice">导出查询发票</button>
+</p>
+<div class="scroll-container">
+  <table class="table table-striped group-order-table">
+    <thead>
+      <tr>
+        <th width="100">订单号</th>
+        <th width="250">发票号码</th>
+        <th width="150">开票日期</th>
+        <th width="150">发票状态</th>
+        <th width="100">团购订单号</th>
+        <th width="200">发票抬头</th>
+        <th width="120">发票地址</th>
+        <th width="90">商品品类</th>
+        <th width="110">商品型号</th>
+        <th width="120">商品编码</th>
+        <th width="90">数量</th>
+        <th width="100">单价(元)</th>
+        <th width="100">含税金额(元)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each _DATA_.data}}
+        {{#each groupOrderInvoiceDtos}}
+          <tr>
+            <td>{{orderId}}</td>
+            <td>{{code}}</td>
+            <td>{{generateTime}}</td>
+            <td>
+              {{#equals status "1"}}正常{{/equals}}
+              {{#equals status "2"}}作废{{/equals}}
+            </td>
+            <td>{{referOrderId}}</td>
+            <td>{{customer}}</td>
+            <td><a href="{{viewUrl}}">发票地址</a></td>
+            <td>{{itemType}}</td>
+            <td>{{itemVersion}}</td>
+            <td>{{itemCode}}</td>
+            <td>{{quantity}}</td>
+            <td>{{price}}</td>
+            <td>{{amt}}</td>
+          </tr>
+        {{/each}}
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="invoice-pagination" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}
+

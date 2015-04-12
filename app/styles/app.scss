@@ -1,0 +1,153 @@
+@import "pokeball/variables";
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+
+.main-container{
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  height: auto !important;
+  height: 500px;
+  min-height: 500px;
+  background-color: #F4F4F4;
+  overflow: hidden;
+
+  .sidebar-outer{
+    float: left;
+    width: 135px;
+  }
+
+  .content-outer{
+    margin:0 0 0 135px;
+    padding: 3px 10px 0;
+    background-color: #fff;
+    height: auto !important;
+    height: 500px;
+    min-height: 500px;
+    .components-title {
+      font-size: 14px;
+      margin: 0;
+      padding: 16px 0 16px 0;
+    }
+  }
+}
+
+//主题内容css
+fieldset {
+  border: 0;
+}
+
+.block-search{
+  padding: 12px 8px;
+
+  .last{
+    margin-left: 20px;
+  }
+}
+.block-show {
+  padding: 12px 8px;
+}
+.select164{
+  width: 164px;
+}
+.span6{
+  padding: 0 5px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  width: 460px;
+  text-align: left;
+}
+.span3{
+  width: 240px;
+}
+//列表
+.control-group {
+  &.control-group-2{
+    width: 500px;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+  }
+
+  .content{
+    display: inline-block;
+    padding: 6px 5px;
+    line-height: 1.2em;
+    max-width: 600px;
+  }
+
+  .img{
+    width: 150px;
+    height: 150px;
+  }
+}
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+.align-center {
+  text-align: center;
+}
+//分页
+.inline-left {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  width: 350px;
+}
+.inline-pagination {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  padding-bottom: 0;
+  width: 100%;
+}
+//总数
+.total-num{
+  color: #ccccca;
+}
+.item-logo {
+  float:left;
+  margin-top: 2px;
+  width: 52px;
+  height: 52px;
+
+  .item-img{
+    width: 52px;
+    height: 52px;
+  }
+}
+.half-width{
+  width: 50%;
+  float:left;
+}
+
+.group-order-table{
+  word-break:break-all;
+}
+.scroll-container{
+  overflow: auto;
+  height: 500px;
+  table{
+    width: 2300px;
+  }
+}
+.item-desc{
+  height: 54px;
+  overflow:auto;
+}
+.left-text{
+  height: 90px;
+}

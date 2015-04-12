@@ -1,0 +1,109 @@
+{{#component "js-comp admin-additem"}}
+<p class="components-title"><strong class="tab-">产品添加</strong></p>
+<form class="form form-aligned js-item-update" novalidate="true" data-id="{{id}}">
+  <fieldset>
+    <div class="control-group control-group-2">
+      <label for="">产品代码:</label>
+      <input required name="itemCode" type="text" placeholder="产品代码" value="{{itemCode}}">
+    </div>
+    <div class="control-group control-group-2">
+      <label for="">产品名称:</label>
+      <input required name="itemName" type="text" placeholder="产品名称" value="{{itemName}}">
+      <span class="note-error-empty"></span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>销售价格:</label>
+      <input required name="price" type="text" placeholder="销售价格(元)" value="{{price}}" pattern="^[0-9]+(.[0-9]{0,2})?$">
+      <span class="note-error-empty">请输入销售价格</span>
+      <span class="note-error">请输入正确的销售价格,如66.66</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for="">实际价格:</label>
+      <input required name="originPrice" type="text" placeholder="实际价格(元)" value="{{originPrice}}" pattern="^[0-9]+(.[0-9]{0,2})?$">
+      <span class="note-error-empty">请输入实际价格</span>
+      <span class="note-error">请输入正确的实际价格</span>
+    </div>
+    <div class="control-group control-group-2">
+      <label for="">限购数量:</label>
+      <input name="buyLimit" value="{{buyLimit}}" type="text" placeholder="限购数量">
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>产品主图片地址:</label>
+      <input required class="info-input" name="mainImage" value="{{mainImage}}" type="url" placeholder="产品主图片地址">
+      <img class="{{#if mainImage}} {{else}}icon-null{{/if}} img" src="{{mainImage}}"/>
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input class="js-item-img" type="file" name="file" single>
+      </div>
+      <span class="note-error">请输入正确的产品主图片地址</span>
+      <span class="note-error-empty">请输入产品主图片地址</span>
+    </div>
+    <div class="control-group">
+      <label for="">产品图片地址1:</label>
+      <input class="info-input" name="image1" value="{{image1}}" type="text" placeholder="产品图片地址1">
+      <img class="{{#if image1}} {{else}}icon-null{{/if}} img" src="{{image1}}"/>
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input class="js-item-img" type="file" name="file" single>
+      </div>
+    </div>
+    <div class="control-group ">
+      <label for="">产品图片地址2:</label>
+      <input class="info-input" name="image2" value="{{image2}}" type="text" placeholder="产品图片地址2">
+      <img class="{{#if image2}} {{else}}icon-null{{/if}} img" src="{{image2}}"/>
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input class="js-item-img" type="file" name="file" single>
+      </div>
+    </div>
+    <div class="control-group">
+      <label for="">产品图片地址3:</label>
+      <input class="info-input" name="image3" value="{{image3}}" type="text" placeholder="产品图片地址3">
+      <img class="{{#if image3}} {{else}}icon-null{{/if}} img" src="{{image3}}"/>
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input class="js-item-img" type="file" name="file" single>
+      </div>
+    </div>
+    <div class="control-group">
+      <label for="">产品图片地址4:</label>
+      <input class="info-input" name="image4" value="{{image4}}" type="text" placeholder="产品图片地址4:">
+      <img class="{{#if image4}} {{else}}icon-null{{/if}} img" src="{{image4}}"/>
+      <div class="btn btn-upload btn-primary">
+        <span>上传</span>
+        <input class="js-item-img" type="file" name="file" single>
+      </div>
+    </div>
+    <div class="control-group control-group-2">
+      <label for=""><span class="required">*</span>产品类别:</label>
+      <select required name="type" class="select select164">
+        <option value="" selected="">请选择</option>
+        <option {{#equals type "1"}}selected{{/equals}} value="1">冰箱</option>
+        <option {{#equals type "2"}}selected{{/equals}} value="2">洗衣机</option>
+        <option {{#equals type "3"}}selected{{/equals}} value="3">空调</option>
+        <option {{#equals type "4"}}selected{{/equals}} value="4">厨电</option>
+        <option {{#equals type "5"}}selected{{/equals}} value="5">热水器</option>
+        <option {{#equals type "6"}}selected{{/equals}} value="6">电视</option>
+        <option {{#equals type "7"}}selected{{/equals}} value="7">冷柜</option>
+      </select>
+      <span class="note-error-empty">请选择产品类别</span>
+    </div>
+    <div class="control-group item-attribute">
+    </div>
+    <div class="control-group">
+      <label for="">产品详情:</label>
+      <div name="packingList" class="item-detail" data-detail="{{packingList}}">
+        {{#inject "common/text-tool"}}
+        {
+          "placeholderText": "请输入产品详情 ..."
+        }
+        {{/inject}}
+      </div>
+    </div>
+    <div class="align-center">
+      <input type="submit" class="btn btn-primary" value="添加商品">
+      <a href="/admin/items" class="btn btn-primary">返回</a>
+    </div>
+  </fieldset>
+</form>
+{{/component}}

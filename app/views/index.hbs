@@ -1,0 +1,35 @@
+{{#partial "base-title"}}首页{{/partial}}
+{{#partial "base-body"}}
+
+<script charset="utf-8">
+  {{#if _USER_}}
+    {{#contain _USER_.roles "ADMIN"}}
+      window.location.href = "/admin/items"
+    {{/contain}}
+    {{#contain _USER_.roles "LEADER"}}
+      window.location.href = "/leader/dashboard"
+    {{/contain}}
+    {{#contain _USER_.roles "BUZV"}}
+      window.location.href = "/buzv/dashboard"
+    {{/contain}}
+    {{#contain _USER_.roles "MERCHANT"}}
+      window.location.href = "/vendor/profits"
+    {{/contain}}
+    {{#contain _USER_.roles "AGENT"}}
+      window.location.href = "/agent/vendorprofits"
+    {{/contain}}
+    {{#contain _USER_.roles "GROUP"}}
+      window.location.href = "/groupon/dashboard"
+    {{/contain}}
+    {{#contain _USER_.roles "OPERATION"}}
+      window.location.href = "/operation/dashboard"
+    {{/contain}}
+    {{#contain _USER_.roles "FINANCE"}}
+      window.location.href = "/finance/dashboard"
+    {{/contain}}
+  {{else}}
+    window.location.href = "/login"
+  {{/if}}
+</script>
+{{/partial}}
+{{> layout_base }}

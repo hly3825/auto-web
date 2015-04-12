@@ -1,0 +1,81 @@
+{{#component "js-comp leader-buzvreport"}}
+<p class="components-title"><strong class="tab-name">小微信息总汇(<span class="total-num">{{_DATA_.total}}</span>)</strong></p>
+<div class="block block-search">
+  <form class="form " novalidate="true">
+    <fieldset>
+      <span class="span3">
+        <label for="">状态</label>
+        <select name="status" class="select">
+          <option value="" selected="">请选择</option>
+          <option {{#equals status "0"}}selected{{/equals}} value="0">停用</option>
+          <option {{#equals status "1"}}selected{{/equals}} value="1">启动</option>
+          <option {{#equals status "-1"}}selected{{/equals}} value="-1">冻结</option>
+        </select>
+      </span>
+      <span class="span3">
+        <label for="">小微名称</label>
+        <input name="name" type="text">
+      </span>
+      <span class="span3">
+        <label for="">时间</label>
+        <input id="buzvreportDateStart" name="buzvreportDateStart" class="input-small" type="text" value="{{buzvreportDateStart}}">
+        -
+        <input id="buzvreportDateEnd" name="buzvreportDateEnd" class="input-small" type="text" value="{{buzvreportDateEnd}}">
+      </span>
+      <span class="span1 last">
+        <button type="submit" class="btn btn-primary">筛选</button>
+        &nbsp;
+        <a href="/leader/buzvreport">取消</a>
+      </span>
+    </fieldset>
+  </form>
+</div>
+<p>
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th rowspan="3" width="40"><input type="checkbox" class="js-select-all"></th>
+      <th rowspan="3" width="100">小微名称</th>
+      <th rowspan="3" width="100">状态</th>
+      <th rowspan="3" width="100">应付佣金(元)</th>
+      <th rowspan="3" width="100">实付佣金(元)</th>
+      <th rowspan="3" width="100">销售量</th>
+      <th colspan="6">产品维度信息统计</th>
+    </tr>
+    <tr>
+      <th colspan="2">洗衣机</th>
+      <th colspan="2">冰箱</th>
+      <th colspan="2">空调</th>
+    </tr>
+    <tr>
+      <th width="100">销售量</th>
+      <th width="100">订单额(元)</th>
+      <th width="100">销售量</th>
+      <th width="100">订单额(元)</th>
+      <th width="100">销售量</th>
+      <th width="100">订单额(元)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each _DATA_.data }}
+      <tr>
+        <td><input type="checkbox"  value="{{id}}" class="js-batch-checkbox"></td>
+        <td>{{name}}</td>
+        <td>{{nick}}</td>
+        <td>{{mobile}}</td>
+        <td>{{email}}</td>
+        <td>
+          {{#equals status "0"}}停用{{/equals}}
+          {{#equals status "1"}}启动{{/equals}}
+          {{#equals status "-1"}}冻结{{/equals}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p></p>
+<div class="inline-pagination align-right">
+  <div class="buzvreport-pagination" data-total="{{_DATA_.total}}"></div>
+</div>
+{{/component}}
