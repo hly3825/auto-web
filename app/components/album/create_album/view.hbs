@@ -1,0 +1,143 @@
+{{#component "js-comp create-album"}}
+<p class="components-title"><strong class="tab-name">专辑创建</strong></p>
+<form class="form form-aligned album-form" data-id="{{id}}" novalidate="true">
+  <div class="control-group">
+    <hr>
+    <h4>专辑信息:</h4>
+  </div>
+  <div class="control-group control-group-2">
+    <label for=""><span class="required">*</span>专辑名称(4-10字):</label>
+    <input required name="name" type="text" maxlength="4" minlength="10" value="{{_DATA_.name}}">
+    <span class="note-error">专辑长度4-10字</span>
+    <span class="note-error-empty">请输入专辑名称</span>
+  </div>
+  <div class="control-group control-group">
+    <label for=""><span class="required">*</span>Pad端导语(4-12字):</label>
+    <input required name="padGuide" type="text" maxlength="4" minlength="12" value="{{_DATA_.padGuide}}">
+    <span class="note-error">Pad端导语长度4-12字</span>
+    <span class="note-error-empty">请输入Pad端导语</span>
+  </div>
+  <div class="control-group control-group">
+    <label for=""><span class="required">*</span>标签(最多选3个):</label>
+    <input required name="tag" type="checkbox" value="5">臭美妞
+    <input required name="tag" type="checkbox" value="2">生活家
+    <input required name="tag" type="checkbox" value="4">骚包男
+    <input required name="tag" type="checkbox" value="3">吃不胖
+    <input required name="tag" type="checkbox" value="7">魔法镜
+    <input required name="tag" type="checkbox" value="6">爱运动
+    <input required name="tag" type="checkbox" value="8">熊孩子
+    <input required name="tag" type="checkbox" value="1">数码控
+    <span class="note-error">Pad端导语长度4-12字</span>
+    <span class="note-error-empty">请输入标签</span>
+  </div>
+  <div class="control-group control-group">
+    <label for=""><span class="required">*</span>区块背景色:</label>
+    <select required name="nature" class="select select164">
+      <option value="" selected="">请选择</option>
+      <option {{#equals _DATA_.textBgId "1"}}selected{{/equals}}  value="1">浅色</option>
+      <option {{#equals _DATA_.textBgId "2"}}selected{{/equals}}  value="2">深色</option>
+    </select>
+    <span class="note-error-empty">请选区块背景色</span>
+  </div>
+  <div class="control-group control-group">
+    <label for=""><span class="required">*</span>手机端头图(640*330,最大50KB)</label>
+    <img class=" {{#if _DATA_.bannerImgPhone}} {{else}}icon-null{{/if}} img"  src="{{_DATA_.bannerImgPhone}}"/>
+    <input required type="hidden" name="bannerImgPhone" class="info-input" value="{{_DATA_.bannerImgPhone}}">
+    <div class="btn btn-upload btn-primary">
+      <span>上传</span>
+      <input type="file" name="file" single>
+    </div>
+    <span class="note-error-empty">请上手机端头图</span>
+  </div>
+  <div class="control-group control-group">
+    <label for=""><span class="required">*</span>手机端封面图(无文字,640*330,最大50KB)</label>
+    <img class=" {{#if _DATA_.coverImgPhone}} {{else}}icon-null{{/if}} img"  src="{{_DATA_.coverImgPhone}}"/>
+    <input required type="hidden" name="coverImgPhone" class="info-input" value="{{_DATA_.coverImgPhone}}">
+    <div class="btn btn-upload btn-primary">
+      <span>上传</span>
+      <input type="file" name="file" single>
+    </div>
+    <span class="note-error-empty">手机端封面图</span>
+  </div>
+  <div class="control-group control-group">
+    <label for=""><span class="required">*</span>Pad端封面图(400*400,最大50KB)</label>
+    <img class=" {{#if _DATA_.bannerImgPad}} {{else}}icon-null{{/if}} img"  src="{{_DATA_.bannerImgPad}}"/>
+    <input required type="hidden" name="bannerImgPhone" class="info-input" value="{{_DATA_.bannerImgPad}}">
+    <div class="btn btn-upload btn-primary">
+      <span>上传</span>
+      <input type="file" name="file" single>
+    </div>
+    <span class="note-error-empty">Pad端封面图</span>
+  </div>
+  <div class="control-group control-group">
+    <label for=""><span class="required">*</span>Pad端头图(有文字创意,2048*380,最大50KB)</label>
+    <img class=" {{#if _DATA_.coverImgPad}} {{else}}icon-null{{/if}} img"  src="{{_DATA_.coverImgPad}}"/>
+    <input required type="hidden" name="coverImgPad" class="info-input" value="{{_DATA_.coverImgPad}}">
+    <div class="btn btn-upload btn-primary">
+      <span>上传</span>
+      <input type="file" name="file" single>
+    </div>
+    <span class="note-error-empty">Pad端头图</span>
+  </div>
+  <div class="control-group control-group">
+    <label for="">男装接入图(非必填,有文字,有阴影,250*400,最大50KB)</label>
+    <img class=" {{#if _DATA_.menClothImg}} {{else}}icon-null{{/if}} img"  src="{{_DATA_.menClothImg}}"/>
+    <input required type="hidden" name="menClothImg" class="info-input" value="{{_DATA_.menClothImg}}">
+    <div class="btn btn-upload btn-primary">
+      <span>上传</span>
+      <input type="file" name="file" single>
+    </div>
+    <span class="note-error-empty">男装接入图</span>
+  </div>
+  <div class="control-group">
+    <hr>
+    <h4>商品信息:</h4>
+  </div>
+  <div class="control-group control-group">
+    <button class="btn btn-success">上传excel</button>
+    <button class="btn btn-success">添加商品</button>
+  </div>
+  <div class="control-group control-group">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="165">淘宝商品ID</th>
+          <th width="265">图片(590*590,最大40KB)</th>
+          <th width="290">推荐语(8-20字)</th>
+          <th width="190">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input name="taobaoId" class="info-input" type="text" value="">
+          </td>
+          <td>
+            <img class=" {{#if _DATA_.menClothImg}} {{else}}icon-null{{/if}} img"  src="{{_DATA_.menClothImg}}"/>
+            <input required type="hidden" name="menClothImg" class="info-input" value="{{_DATA_.menClothImg}}">
+            <div class="btn btn-upload btn-primary">
+              <span>上传</span>
+              <input type="file" name="file" single>
+            </div>
+          </td>
+          <td>
+            <input name="recommend" class="info-input" type="text" value="">
+          </td>
+          <td>
+            <a href="/admin/addagent?id={{id}}" class="btn btn-primary">上移</a>&nbsp;&nbsp;
+            <a href="/admin/addagent?id={{id}}" class="btn btn-primary">下移</a>&nbsp;&nbsp;
+            <a href="/admin/addagent?id={{id}}" class="btn btn-primary">删除</a>&nbsp;&nbsp;
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="align-center">
+    <input type="submit" class="btn btn-primary" value="保存">
+    &nbsp;
+    <input type="button" class="btn btn-primary js-submit-save" value="提交">
+    &nbsp;
+    <a href="/admin/agents" class="btn btn-primary">返回</a>
+  </div>
+</form>
+{{/component}}
