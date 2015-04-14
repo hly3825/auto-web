@@ -1,0 +1,18 @@
+{{#each data}}
+<tr>
+  <td>
+    <input name="taobaoId" class="info-input" type="text" value="{{taobaoId}}">
+  </td>
+  <td>
+    <input required name="mainImage" class="input-large" type="text" value="{{mainImage}}">
+  </td>
+  <td>
+    <input name="recommend" class="info-input" type="text" value="{{recommend}}">
+  </td>
+  <td>
+    <button data-id="{{id}}" class="btn btn-primary js-up">上移</button>
+    <button data-id="{{id}}" class="btn btn-primary js-down">上移</button>
+    <button class="btn" data-id="{{id}}" data-toggle="confirm" data-title="您确定删除吗?" data-content="删除之后将无法回复" data-event="confirm:delete">删除</button>
+  </td>
+</tr>
+{{/each}}
