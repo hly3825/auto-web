@@ -1,6 +1,13 @@
 app: auto-web
 
 components:
+  "album/album_manage": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "专辑管理"
+    service: "auto-web:queryAlbumByParam" # app:serviceKey
+    desc: "专辑管理" # 可选
+
+
   "admin/items": # component path
     category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
     name: "管理员-商品列表查询"

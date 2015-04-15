@@ -1,6 +1,10 @@
 app: auto-web
 
 services:
+  "queryAlbumByParam":
+    type: SPRING
+    uri: "io.terminus.auto.album.service.AlbumReadService:queryByParam"
+
   "queryChosenItems":
     type: SPRING
     uri: "io.terminus.auto.item.service.ItemService:queryChosenItems"

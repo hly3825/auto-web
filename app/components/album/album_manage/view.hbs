@@ -1,0 +1,104 @@
+{{#component "album-manage js-comp "}}
+  <p class="components-title"><strong>专辑管理</strong>&nbsp;&nbsp;&nbsp;<span>共（{{#if _DATA_.total}}{{_DATA_.total}}{{else}}0{{/if}}）张专辑</span></p>
+  <div class="tab tab-condensed" style="display: inline-block;">
+    <ul class="tab-navs clearfix" style="margin-bottom: 10px;">
+      <li class="active"><a href="/album/album-manage">专辑管理</a></li>
+      <li><a href="/album/create-album">创建专辑</a></li>
+    </ul>
+
+    <div class="block">
+      <form id="form-search" class="form">
+        <fieldset>
+          <span class="span3">
+            <label>制作者</label>
+            <input type="text" name="createBy"placeholder="请输入制作者" value="{{createBy}}">
+          </span>
+          <span class="span3">
+            <label>专辑名称</label>
+            <input type="text" name="name" placeholder="请输入专辑名称" value="{{name}}">
+          </span>
+          <span class="span3">
+            <label>活动状态</label>
+            <select name="status">
+              <option value="">全部</option>
+              <option value="1" {{#equals status "0"}}selected="selected"{{/equals}}>初始化</option>
+              <option value="0" {{#equals status "1"}}selected="selected"{{/equals}}>待初审</option>
+              <option value="2" {{#equals status "2"}}selected="selected"{{/equals}}>审核通过</option>
+              <option value="-1" {{#equals status "-2"}}selected="selected"{{/equals}}>审核不通过</option>
+              <option value="3" {{#equals status "3"}}selected="selected"{{/equals}}>终核通过</option>
+              <option value="3" {{#equals status "-3"}}selected="selected"{{/equals}}>终核不通过</option>
+              <option value="3" {{#equals status "4"}}selected="selected"{{/equals}}>已提交</option>
+              <option value="3" {{#equals status "5"}}selected="selected"{{/equals}}>已排期</option>
+            </select>
+          </span>
+          <span class="span1">
+            <label>
+              <input class="btn btn-success" type="submit" value="搜索">
+              <a href="/album/album-manage" style="margin-left:20px">清除</a>
+            </label>
+          </span>
+        </fieldset>
+        <fieldset>
+          <span class="span3">
+            <label>创建时间</label>
+            <input type="text" name="createAt" placeholder="请输入创建时间" value="{{createAt}}">
+          </span>
+          <span class="span3">
+            <label>公司名称</label>
+            <input type="text" name="companyName" placeholder="请输入公司名称" value="{{companyName}}">
+          </span>
+        </fieldset>
+      </form>
+    </div>
+    <table class="album-template-table table table-horizontal center-text" data-domain="{{_HREF_.main}}">
+      <thead>
+        <tr>
+          <th width="12%">专辑名称</th>
+          <th width="10%">头图Banner</th>
+          <th width="10%">商品数量</th>
+          <th width="7%">状态</th>
+          <th width="10%">操作</th>
+          <th width="10%">审核情况</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each _DATA_.data}}
+          <tr class="album" data-album="{{json this}}" data-id="{{id}}">
+            <td>
+              {{name}}
+            </td>
+            <td>
+              <img width="100" height="100" src="{{bannerImgPhone}}"/>
+            </td>
+            <td>
+
+            </td>
+            <td>
+              {{#equals status 0}}初始化{{/equals}}
+              {{#equals status 1}}待初审{{/equals}}
+              {{#equals status 2}}审核通过{{/equals}}
+              {{#equals status "-2"}}审核不通过{{/equals}}
+              {{#equals status 3}}终核通过{{/equals}}
+              {{#equals status "-3"}}终核不通过{{/equals}}
+              {{#equals status 4}}已提交{{/equals}}
+              {{#equals status 5}}已排期{{/equals}}
+            </td>
+
+            <td>
+              {{#equals status 0}}
+                <button data-id="{{id}}" class="btn btn-info top-five" data-toggle="confirm" data-title="您确定发布吗?" data-content="发布之后立即生效" data-event="confirm:release">发布</button><br>
+                <a class="js-edit-coupon" href="javascript:void(0);">修改</a>
+                <a data-id="{{id}}" href="javascript:void(0);" data-toggle="confirm" data-title="您确定删除吗?" data-content="删除之后无法恢复" data-event="confirm:delete">删除</a>
+              {{/equals}}
+              {{#equals status 2}}
+              <button data-id="{{id}}" class="btn btn-small btn-info top-five" data-toggle="confirm" data-title="您确定停用吗?" data-content="停用之后将无法领券" data-event="confirm:stop">停用</button>
+              {{/equals}}
+            </td>
+            <td>{{idcStatus}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="album-pagination" data-total="{{_DATA_.total}}"></div>
+  </div>
+{{/component}}

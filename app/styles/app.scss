@@ -151,3 +151,10 @@ fieldset {
 .left-text{
   height: 90px;
 }
+.tab .tab-navs {
+  margin-bottom: 10px;
+  background-color: transparent;
+}
+.clearfix:before, .clearfix:after {
+  content: "";
+}

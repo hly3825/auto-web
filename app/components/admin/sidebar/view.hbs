@@ -3,8 +3,10 @@
     <li class="sidebar-li">
       <a href="javascript:void(0);" class="sidebar-li-a"><i class="icon-minus"></i><strong>&nbsp;专辑管理</strong></a>
       <ul class="inner sidebar-inner-ul">
-        <li class="inner-item active
+        <li class="inner-item {{#equals _PATH_ "album/create-album"}}active{{/equals}}
         "><div class="text-link"><a href="/album/create-album" class="inner-item-a">创建专辑</a></div><span class="corner"></span><span class="wide"></span></li>
+        <li class="inner-item {{#equals _PATH_ "album/album-manage"}}active{{/equals}}
+        "><div class="text-link"><a href="/album/album-manage" class="inner-item-a">专辑管理</a></div><span class="corner"></span><span class="wide"></span></li>
       </ul>
     </li>
     <li class="sidebar-li">
