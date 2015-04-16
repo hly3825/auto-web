@@ -18,9 +18,14 @@ class Album
     new Pagination(".album-pagination").total($(".album-pagination").data("total")).show()
     @$jsCouponNew.on "click", @newCoupon
     @$jsCouponEdit.on "click", @editCoupon
-    $(document).on "confirm:release", @releaseCoupon
-    $(document).on "confirm:delete", @deleteCoupon
-    $(document).on "confirm:stop", @stopCoupon
+    $(document).on "confirm:release", @releaseAlbum
+    $(document).on "confirm:delete", @deleteAlbum
+    $(document).on "confirm:firstpass", @firstpassAlbum
+    $(document).on "confirm:firstnotpass", @firstnotpassAlbum
+    $(document).on "confirm:finalpass", @finalpassAlbum
+    $(document).on "confirm:finalnotpass", @finalnotpassAlbum
+    $(document).on "confirm:syn", @synAlbum
+
     $(document).on "keyup", @jsActivityOne, @activityOneKeyup
     $(document).on "keyup", @jsActivityTwo, @activityTwoKeyup
     $(document).on "click", @jsSelectImage, @selectImage
@@ -106,36 +111,54 @@ class Album
       else
         {sellerIds: couponObject.sellerIds, itemIds: couponObject.itemIds, couponDefinition: couponObject}
 
-  ###
-    发布优惠券
-  ###
-  releaseCoupon: (evt, data)->
+
+  releaseAlbum: (evt, data)->
     $.ajax
-      url: "/api/admin/coupon/#{data}/release"
+      url: "/api/albums/#{data}/release"
       type: "PUT"
       success: ->
         window.location.reload()
 
-  ###
-    删除优惠券
-  ###
-  deleteCoupon: (evt, data)->
+  deleteAlbum: (evt, data)->
     $.ajax
-      url: "/api/admin/coupon/#{data}/delete"
+      url: "/api/albums/#{data}/delete"
       type: "DELETE"
       success: ->
         window.location.reload()
 
-  ###
-    停用优惠券
-  ###
-  stopCoupon: (evt, data)->
+  firstpassAlbum: (evt, data)->
     $.ajax
-      url: "/api/admin/coupon/#{data}/stop"
+      url: "/api/albums/#{data}/true/firstcheck"
       type: "PUT"
       success: ->
         window.location.reload()
 
+  firstnotpassAlbum: (evt, data)->
+    $.ajax
+      url: "/api/albums/#{data}/false/firstcheck"
+      type: "PUT"
+      success: ->
+        window.location.reload()
+
+  finalpassAlbum: (evt, data)->
+    $.ajax
+      url: "/api/albums/#{data}/true/finalcheck"
+      type: "PUT"
+      success: ->
+        window.location.reload()
+
+  finalnotpassAlbum: (evt, data)->
+    $.ajax
+      url: "/api/albums/#{data}/false/finalcheck"
+      type: "PUT"
+      success: ->
+        window.location.reload()
+  synAlbum: (evt, data)->
+    $.ajax
+      url: "/api/albums/#{data}/synchronous"
+      type: "PUT"
+      success: ->
+        window.location.reload()
   #互斥券定义1
   activityOneKeyup: ->
     isTrue = _.some($(".activity-one"), (input)-> if $(input).val() then true else false)
