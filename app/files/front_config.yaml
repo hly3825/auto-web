@@ -7,6 +7,12 @@ components:
     service: "auto-web:queryAlbumByParam" # app:serviceKey
     desc: "专辑管理" # 可选
 
+  "album/create_album": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "专辑管理"
+    service: "auto-web:queryAlbumDetail" # app:serviceKey
+    desc: "专辑管理" # 可选
+
 
   "admin/items": # component path
     category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE

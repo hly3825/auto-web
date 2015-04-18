@@ -21,14 +21,14 @@
             <label>活动状态</label>
             <select name="status">
               <option value="">全部</option>
-              <option value="1" {{#equals status "0"}}selected="selected"{{/equals}}>初始化</option>
-              <option value="0" {{#equals status "1"}}selected="selected"{{/equals}}>待初审</option>
+              <option value="0" {{#equals status "0"}}selected="selected"{{/equals}}>初始化</option>
+              <option value="1" {{#equals status "1"}}selected="selected"{{/equals}}>待初审</option>
               <option value="2" {{#equals status "2"}}selected="selected"{{/equals}}>审核通过</option>
-              <option value="-1" {{#equals status "-2"}}selected="selected"{{/equals}}>审核不通过</option>
+              <option value="-2" {{#equals status "-2"}}selected="selected"{{/equals}}>审核不通过</option>
               <option value="3" {{#equals status "3"}}selected="selected"{{/equals}}>终核通过</option>
-              <option value="3" {{#equals status "-3"}}selected="selected"{{/equals}}>终核不通过</option>
-              <option value="3" {{#equals status "4"}}selected="selected"{{/equals}}>已提交</option>
-              <option value="3" {{#equals status "5"}}selected="selected"{{/equals}}>已排期</option>
+              <option value="-3" {{#equals status "-3"}}selected="selected"{{/equals}}>终核不通过</option>
+              <option value="4" {{#equals status "4"}}selected="selected"{{/equals}}>已提交</option>
+              <option value="5" {{#equals status "5"}}selected="selected"{{/equals}}>已排期</option>
             </select>
           </span>
           <span class="span1">
@@ -87,7 +87,7 @@
             <td>
               {{#equals status 0}}
                 <button data-id="{{id}}" class="btn btn-info top-five" data-toggle="confirm" data-title="您确定提交吗?" data-content="提交之后将无法修改删除并且立即进入审核流程" data-event="confirm:release">发布</button><br>
-                <a class="js-edit-coupon" href="javascript:void(0);">修改</a>
+                <a href="/album/create-album?id={{id}}" class="js-edit-coupon">修改</a>
                 <a data-id="{{id}}" href="javascript:void(0);" data-toggle="confirm" data-title="您确定删除吗?" data-content="删除之后无法恢复" data-event="confirm:delete">删除</a>
               {{/equals}}
               {{#equals status 1}}

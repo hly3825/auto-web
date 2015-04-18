@@ -1,0 +1,21 @@
+<tr data-id="{{data.id}}">
+  <td>
+    <input name="taobaoId" class="info-input" type="text" value="{{data.taobaoId}}">
+  </td>
+  <td>
+    <img class=" {{#if data.mainImage}} {{else}}icon-null{{/if}} img"  src="{{data.mainImage}}"/>
+    <input type="hidden" name="mainImage" class="info-input" value="{{data.mainImage}}">
+    <div class="btn btn-upload btn-primary">
+      <span>上传</span>
+      <input data-idc="" type="file" name="file" single>
+    </div>
+  </td>
+  <td>
+    <input name="recommend" class="info-input" type="text" value="{{data.recommend}}">
+  </td>
+  <td>
+    <button class="btn js-go-up" data-id="{{data.id}}">上移</button>
+    <button class="btn js-go-down" data-id="{{data.id}}">下移</button>
+    <button class="btn js-go-delete" data-id="{{data.id}}">删除</button>
+  </td>
+</tr>

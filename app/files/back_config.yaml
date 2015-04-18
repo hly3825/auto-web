@@ -5,6 +5,10 @@ services:
     type: SPRING
     uri: "io.terminus.auto.album.service.AlbumReadService:queryByParam"
 
+  "queryAlbumDetail":
+    type: SPRING
+    uri: "io.terminus.auto.album.service.AlbumReadService:queryAlbumDetail"
+
   "queryChosenItems":
     type: SPRING
     uri: "io.terminus.auto.item.service.ItemService:queryChosenItems"
