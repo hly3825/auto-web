@@ -15,6 +15,25 @@ class CreateAlbum
     $(document).on "click", ".js-go-down", @down
     $(document).on "click", ".js-go-delete", @delete
     $(document).on "click", ".js-add-item", @addItem
+    $(document).on "blur", "input[name='taobaoId']", @checkTaobaoId
+
+  checkTaobaoId: ->
+    taobaoId = $(@).val()
+    input = @
+    $.ajax
+      url: "/api/items/#{taobaoId}/check"
+      type: "GET"
+      contentType: "application/json"
+      success: (data)=>
+        if !data
+          new Modal
+            "icon": "error"
+            "title": "错误"
+            "content": "商品不存在"
+          .show(
+            ()->
+              $(input).closest("tr").remove()
+          )
 
   init: ->
     if $("input[name='id']").length is 1
@@ -98,11 +117,13 @@ class CreateAlbum
     $infoInput = $(_this).parent().siblings(".info-input")
     $imgshow = $(_this).parent().siblings(".img")
     $btncircle = $(_this).parent().closest(".btn-primary")
+    picInfo = $(_this).data "condition"
     $(@).fileupload
       "change": => $btncircle.spin("medium")
       url: "/api/idc/upload/img"
       type: "POST"
       dataType: "json"
+      formData: picInfo
       success: (data)=>
         $infoInput.val(data.url).change()
         $imgshow.attr "src", data.url
@@ -141,18 +162,26 @@ class CreateAlbum
     result = false;
     if $(":checkbox:checked").length > 3
       new Modal
-            "icon": "error"
-            "title": "最多选择三个标签"
-            "content": "最多选择三个标签"
-          .show()
+        "icon": "error"
+        "title": "最多选择三个标签"
+        "content": "最多选择三个标签"
+      .show()
       return result
 
     if $("table.item-table tbody tr").length is 0
       new Modal
-            "icon": "error"
-            "title": "请添加至少一个商品"
-            "content": "请添加至少一个商品"
-          .show()
+        "icon": "error"
+        "title": "请添加至少一个商品"
+        "content": "请添加至少一个商品"
+      .show()
+      return result
+
+    if $(".album-form table.item-table tbody tr").length < 10
+      new Modal
+        "icon": "error"
+        "title": "商品最少上传10个"
+        "content": "商品最少上传10个"
+      .show()
       return result
 
     _.each $(".album-form table.item-table tbody tr"), (item)->

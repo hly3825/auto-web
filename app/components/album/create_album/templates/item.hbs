@@ -10,9 +10,9 @@
     <input name="recommend" class="info-input" type="text" value="{{recommend}}">
   </td>
   <td>
-    <button data-id="{{id}}" class="btn btn-primary js-up">上移</button>
-    <button data-id="{{id}}" class="btn btn-primary js-down">上移</button>
-    <button class="btn" data-id="{{id}}" data-toggle="confirm" data-title="您确定删除吗?" data-content="删除之后将无法回复" data-event="confirm:delete">删除</button>
+    <button class="btn js-go-up" data-id="{{data.id}}">上移</button>
+    <button class="btn js-go-down" data-id="{{data.id}}">下移</button>
+    <button class="btn js-go-delete" data-id="{{data.id}}">删除</button>
   </td>
 </tr>
 {{/each}}

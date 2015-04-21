@@ -117,7 +117,14 @@
     </table>
   </div>
   <div class="align-center">
-    <input type="submit" class="btn btn-primary" value="保存">
+    {{#if _DATA_.album.id}}
+      {{#of _DATA_.album.status "0,-2,-3"}}
+        <input type="submit" class="btn btn-primary" value="保存">
+      {{/of}}
+    {{else}}
+      <input type="submit" class="btn btn-primary" value="保存">
+    {{/if}}
+
     &nbsp;
     <a href="/album/album-manage" class="btn btn-primary">返回</a>
   </div>

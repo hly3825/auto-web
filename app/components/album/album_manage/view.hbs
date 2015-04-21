@@ -71,7 +71,7 @@
               <img width="100" height="100" src="{{bannerImgPhone}}"/>
             </td>
             <td>
-
+              {{itemNum}}
             </td>
             <td>
               {{#equals status 0}}初始化{{/equals}}
@@ -101,6 +101,7 @@
               {{#equals status 3}}
               <button data-id="{{id}}" class="btn btn-small btn-info top-five" data-toggle="confirm" data-title="您确定同步给IDC吗?" data-content="同步之后将无法操作此数据" data-event="confirm:syn">同步给IDC</button>
               {{/equals}}
+              <a href="/album/create-album?id={{id}}">详情</a>
             </td>
             <td>{{idcStatus}}</td>
           </tr>

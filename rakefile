@@ -1,8 +1,8 @@
 require 'rake/contrib/ftptools'
 
-desc "release paras in minutes"
+desc "release auto-web in minutes"
 task :release do
-  exec "linner build && rsync -rv --progress public/* 690jh@10.135.13.112:~/project/assets/public"
+  exec "linner build && rsync -rv --progress public/* admin@121.40.30.50:~/assets/auto-web/public"
 end
 
 desc "Release paras to test server"

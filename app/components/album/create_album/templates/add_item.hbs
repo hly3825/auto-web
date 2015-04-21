@@ -4,10 +4,10 @@
   </td>
   <td>
     <img class=" {{#if data.mainImage}} {{else}}icon-null{{/if}} img"  src="{{data.mainImage}}"/>
-    <input type="hidden" name="mainImage" class="info-input" value="{{data.mainImage}}">
+    <input type="input" name="mainImage" class="info-input" value="{{data.mainImage}}">
     <div class="btn btn-upload btn-primary">
       <span>上传</span>
-      <input data-idc="" type="file" name="file" single>
+      <input data-condition='{"width":250,"height":400,"size":51200}' data-idc="" type="file" name="file" single>
     </div>
   </td>
   <td>
