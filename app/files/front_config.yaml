@@ -13,6 +13,19 @@ components:
     service: "auto-web:queryAlbumDetail" # app:serviceKey
     desc: "专辑管理" # 可选
 
+  "admin/users": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-用户管理"
+    service: "auto-web:searchUser" # app:serviceKey
+    desc: "管理员-用户管理" # 可选
+
+  "admin/add-user": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-创建用户"
+    service: "auto-web:findUserById" # app:serviceKey
+    desc: "管理员-创建用户" # 可选
+
+
 
   "admin/items": # component path
     category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
@@ -149,7 +162,7 @@ components:
   "vendor/person-info": # component path
     category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
     name: "商户-个人信息"
-    service: ":findVendorByBaseUser" # app:serviceKey
+    service: "auto-web:findVendorByBaseUser" # app:serviceKey
     desc: "商户-个人信息" # 可选
 
   "buzv/items":
@@ -377,7 +390,7 @@ components:
   "common/person-info": # component path
     category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
     name: "用户-查看个人信息"
-    service: ":viewUserInfo" # app:serviceKey
+    service: "auto-web:viewUserInfo" # app:serviceKey
     desc: "用户-查看个人信息" # 可选
 
   "groupon/order-groupon-list": # component path
@@ -441,293 +454,18 @@ components:
     desc: "用户-团购备货单信息统计" # 可选
 
 mappings:
-  - pattern: "api/item/{itemId}/update"
+  - pattern: "api/company"
     methods:
-      - POST
-    service: ":updateItem"
-    desc: "管理员-更新商品"
-
-  - pattern: "api/item/create"
-    methods:
-      - POST
-    service: ":createItem"
-    desc: "管理员-添加商品"
-
-  - pattern: "api/item/dealShelves"
-    methods:
-      - POST
-    service: ":dealShelves"
-    desc: "管理员-商品上下架"
-
-  - pattern: "api/item/import"
-    methods:
-      - POST
-    service: ":importItems"
-    desc: "管理员-批量导入商品"
-
-  - pattern: "api/leader/frozen"
-    methods:
-      - POST
-    service: ":forzenLeader"
-    desc: "管理员-冻结总部"
-
-  - pattern: "api/agent/add"
-    methods:
-      - POST
-    service: ":createAgent"
-    desc: "管理员-添加代理商"
-
-  - pattern: "api/agent/update"
-    methods:
-      - POST
-    service: ":updateVendor"
-    desc: "管理员-更新代理商"
-
-  - pattern: "api/agent/submit"
-    methods:
-      - POST
-    service: ":submitAgent"
-    desc: "管理员-直接提交代理商"
-
-  - pattern: "api/agent/delete"
-    methods:
-      - POST
-    service: ":deleteAgent"
-    desc: "管理员-删除代理商"
-
-  - pattern: "api/vendor/delete"
-    methods:
-      - POST
-    service: ":deleteMerchant"
-    desc: "小微-删除商户"
-
-  - pattern: "api/vendor/audit"
-    methods:
-      - POST
-    service: ":auditMerchant"
-    desc: "小微-审核商户"
-
-  - pattern: "api/vendor/add"
-    methods:
-      - POST
-    service: ":createMerchant"
-    desc: "小微-添加商户"
-
-  - pattern: "api/vendor/submit"
-    methods:
-      - POST
-    service: ":submitMerchant"
-    desc: "小微-提交商户"
-
-  - pattern: "api/vendor/submitbatch"
-    methods:
-      - POST
-    service: ":submitMerchantBatch"
-    desc: "小微-批量提交商户"
-
-  - pattern: "api/vendor/tempsave"
-    methods:
-      - POST
-    service: ":tempSaveMerchant"
-    desc: "小微-暂存商户"
-
-  - pattern: "api/vendor/update"
-    methods:
-      - POST
-    service: ":updateVendor"
-    desc: "小微-更新商户"
-
-  - pattern: "api/pay/applyPay"
-    methods:
-      - POST
-    service: ":payApply"
-    desc: "小微-申请付款"
-
-  - pattern: "api/checkpay/checkPay"
-    methods:
-      - POST
-    service: ":payCheck"
-    desc: "​总部-审核付款"
-
-  - pattern: "api/vendor/items"
-    methods:
-      - GET
-    service: ":queryVendorChosenItem"
-    desc: "小微-查找商户可以添加的商品"
-
-  - pattern: "api/vendor/{vendorId}/items"
-    methods:
-      - GET
-    service: ":queryChosenItemByVendor"
-    desc: "小微-查找商户可以添加的商品"
-
-  - pattern: "api/vendor/{vendorId}/chooseditems"
-    methods:
-      - GET
-    service: ":findVendorItem"
-    desc: "小微-查找商户已经添加的商品"
-
-  - pattern: "api/vendor/create/items"
-    methods:
-      - POST
-    service: ":createItemCommission"
-    desc: "小微-商户添加商品"
+      - ALL
+    service: "auto-web:findAllCompany"
+    desc: "管理员-获取所有公司"
 
   - pattern: "api/user/change_password"
     methods:
       - POST
-    service: ":changePassword"
+    service: "auto-web:changePassword"
     desc: "用户-密码修改"
 
-  - pattern: "api/address/province"
-    methods:
-      - GET
-    service: ":queryProvince"
-    desc: "用户-查询省"
-
-  - pattern: "api/address/{provinceid}/city"
-    methods:
-      - GET
-    service: ":queryCity"
-    desc: "用户-查询市"
-
-  - pattern: "api/address/{cityid}/area"
-    methods:
-      - GET
-    service: ":queryArea"
-    desc: "用户-查询区"
-
-  - pattern: "api/rule/{ruleId}/items"
-    methods:
-      - GET
-    service: ":queryItemCommissionRule"
-    desc: "管理员-查询佣金规则关联的商品"
-
-  - pattern: "api/rule/{ruleId}/chooseitems"
-    methods:
-      - GET
-    service: ":queryCommissionRuleItem"
-    desc: "管理员-查询可以选择的商品"
-
-  - pattern: "api/summary/commission"
-    methods:
-      - GET
-    service: ":queryCommissionStatisticDetail"
-    desc: "首页Dashboard统计信息图标"
-
-  - pattern: "api/rules/search"
-    methods:
-      - GET
-    service: ":queryCommission"
-    desc: "admin查询规则信息"
-
-  - pattern: "api/items/rule/create"
-    methods:
-      - POST
-    service: ":createItemCommission"
-    desc: "admin给商品添加规则"
-
-  - pattern: "api/rule/create"
-    methods:
-      - POST
-    service: ":createCommission"
-    desc: "添加规则"
-
-  - pattern: "api/rule/update"
-    methods:
-      - POST
-    service: ":updateCommission"
-    desc: "更新规则"
-
-  - pattern: "api/rule/disable"
-    methods:
-      - POST
-    service: ":disableCommissionRule"
-    desc: "停用规则"
-
-  - pattern: "api/order/returnMoney"
-    methods:
-      - POST
-    service: ":confirmFinance"
-    desc: "退款"
-
-  - pattern: "api/order/returnSummary"
-    methods:
-      - POST
-    service: ":summaryReturn"
-    desc: "统计退货/退款"
-
-  - pattern: "api/order/calcOrderVolumn"
-    methods:
-      - POST
-    service: ":calcOrderVolumn"
-    desc: "统计订单交易"
-
-  - pattern: "api/out/idsFindGroupOrder"
-    methods:
-      - GET
-    service: ":idsFindGroupOrder"
-    desc: "ids查询团购订单信息"
-
-  - pattern: "api/out/getInvoiceStatistics"
-    methods:
-      - ALL
-    service: ":getInvoiceStatistics"
-    desc: "edw查询发票统计信息"
-
-  - pattern: "api/out/receiveHpResult"
-    methods:
-      - ALL
-    service: ":receiveHpResult"
-    desc: "hp返回鉴定单结果"
-
-  - pattern: "api/order/transOmsstatus"
-    methods:
-      - POST
-    service: ":transOmsstatus"
-    desc: "OMS状态重置"
-
-  - pattern: "api/mdm/bank/search"
-    methods:
-      - ALL
-    service: ":findMdmBankViewByFuzzyName"
-    desc: "银行自动补全"
-
-  - pattern: "api/mdm/agent/search"
-    methods:
-      - ALL
-    service: ":findAgentByFuzzyName"
-    desc: "agent自动补全"
-
-  - pattern: "api/grouporder/redisAddress"
-    methods:
-      - ALL
-    service: ":getExportGroupOrderAddress"
-    desc: "获得订单导出地址"
-
-  - pattern: "api/item/searchattr/byParentId"
-    methods:
-      - ALL
-    service: ":findViewByParentId"
-    desc: "根据上级id查询"
-
-  - pattern: "api/item/searchattr/byCategoryId"
-    methods:
-      - ALL
-    service: ":findAttributeViewByCategoryId"
-    desc: "根据categoryId查询attribute询"
-
-  - pattern: "api/item/searchattr/byCategoryIdAndKey"
-    methods:
-      - ALL
-    service: ":findAttributeViewName"
-    desc: "根据categoryId和attributeKey查询attribute"
-
-  - pattern: "api/groupstock/redisAddress"
-    methods:
-      - ALL
-    service: ":getExportPrepareStockUrl"
-    desc: "获得备货单导出地址"
 
 auths:
   protectedList:
@@ -740,30 +478,6 @@ auths:
         - AGENT
         - GROUP
         - OPERATION
-        - FINANCE
-    - pattern: "/admin/.*"
-      roles:
-        - ADMIN
-    - pattern: "/leader/.*"
-      roles:
-        - LEADER
-    - pattern: "/buzv/.*"
-      roles:
-        - BUZV
-    - pattern: "/agent/.*"
-      roles:
-        - AGENT
-    - pattern: "/vendor/.*"
-      roles:
-        - MERCHANT
-    - pattern: "/groupon/.*"
-      roles:
-        - GROUP
-    - pattern: "/operation/.*"
-      roles:
-        - OPERATION
-    - pattern: "/finance/.*"
-      roles:
         - FINANCE
   whiteList:
     - pattern: "/assets/.*" # 正则表达式

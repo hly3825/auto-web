@@ -312,3 +312,15 @@ services:
   "getExportPrepareStockUrl":
     type: SPRING
     uri: "io.terminus.auto.order.service.PrepareStockOrderService:getExportPrepareStockUrl"
+
+  "findUserById":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserReaderService:findById"
+
+  "searchUser":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.UserReaderService:searchUser"
+
+  "findAllCompany":
+    type: SPRING
+    uri: "io.terminus.auto.user.service.CompanyReaderService:findAllCompany"

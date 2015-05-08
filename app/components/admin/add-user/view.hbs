@@ -1,0 +1,69 @@
+{{#component "js-comp admin-adduser"}}
+<p class="components-title"><strong class="tab-name">创建用户</strong></p>
+<form class="form form-aligned user-form" data-id="{{id}}" novalidate="true">
+  {{#if _DATA_.id}}<input type="hidden" name="id" value="{{_DATA_.id}}">{{/if}}
+  <fieldset>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>用户名:</label>
+      <input required name="name" type="text" value="{{_DATA_.name}}">
+      <span class="note-error-empty">请输入用户名</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>密码:</label>
+      <input required name="encryptedPassword" type="password" value="{{_DATA_.encryptedPassword}}" {{#if _DATA_.id}} readonly="true" {{/if}}>
+      <span class="note-error-empty">请输入密码</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>姓名:</label>
+      <input required name="nick" type="text" value="{{_DATA_.nick}}">
+      <span class="note-error-empty">请输入姓名</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>性别:</label>
+      <select required name="sex" class="select select164">
+        <option value="" selected="">请选择</option>
+        <option {{#equals _DATA_.sex "0"}}selected{{/equals}}  value="0">女</option>
+        <option {{#equals _DATA_.sex "1"}}selected{{/equals}}  value="1">男</option>
+      </select>
+      <span class="note-error-empty">请选择性别</span>
+    </div>
+    <div class="control-group">
+      <label for=""><span class="required">*</span>用户类别:</label>
+      <select required name="userType" class="select select164">
+        <option value="" selected="">请选择</option>
+        <option {{#equals _DATA_.userType "1"}}selected{{/equals}}  value="1">管理员</option>
+        <option {{#equals _DATA_.userType "2"}}selected{{/equals}}  value="2">普通用户</option>
+      </select>
+      <span class="note-error-empty">请选择用户类别</span>
+    </div>
+    <div class="control-group">
+      <label for="">手机:</label>
+      <input name="mobile" type="text" value="{{_DATA_.mobile}}">
+      <span class="note-error-empty">请输入手机号</span>
+    </div>
+    <div class="control-group">
+      <label for="">邮箱:</label>
+      <input name="email" type="text" value="{{_DATA_.email}}">
+      <span class="note-error-empty">请输入邮箱</span>
+    </div>
+
+    <div class="control-group">
+      <label for=""><span class="required">*</span>公司:</label>
+      <select required name="companyId" class="select select164" data-id="{{_DATA_.companyId}}">
+        <option value="" selected="">请选择</option>
+      </select>
+      <span class="note-error-empty">请选择公司</span>
+    </div>
+    {{#equals view "1"}}
+    {{else}}
+    <div class="control-group">
+      <div class="controls">
+        <input type="submit" class="btn btn-primary" value="保存">
+        &nbsp;
+        <a href="/admin/users" class="btn btn-primary">返回</a>
+      </div>
+    </div>
+    {{/equals}}
+  </fieldset>
+</form>
+{{/component}}

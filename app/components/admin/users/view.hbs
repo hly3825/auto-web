@@ -1,0 +1,106 @@
+{{#component "users js-comp "}}
+  <p class="components-title"><strong>用户管理</strong>&nbsp;&nbsp;&nbsp;<span>共（{{#if _DATA_.total}}{{_DATA_.total}}{{else}}0{{/if}}）个用户</span></p>
+  <div class="tab tab-condensed" style="display: inline-block;">
+    <ul class="tab-navs clearfix" style="margin-bottom: 10px;">
+      <li class="active"><a href="/admin/users">用户管理</a></li>
+      <li><a href="/admin/adduser">创建用户</a></li>
+    </ul>
+
+    <div class="block">
+      <form id="form-search" class="form">
+        <fieldset>
+          <span class="span3">
+            <label>用户名</label>
+            <input type="text" name="name" placeholder="请输入用户名" value="{{name}}">
+          </span>
+          <span class="span3">
+            <label>姓名</label>
+            <input type="text" name="nick" placeholder="请输入姓名" value="{{nick}}">
+          </span>
+          <span class="span3">
+            <label>用户状态</label>
+            <select name="status">
+              <option value="">全部</option>
+              <option value="0" {{#equals status "0"}}selected="selected"{{/equals}}>停用</option>
+              <option value="1" {{#equals status "1"}}selected="selected"{{/equals}}>正常</option>
+            </select>
+          </span>
+          <span class="span1">
+            <label>
+              <input class="btn btn-success" type="submit" value="搜索">
+              <a href="/album/album-manage" style="margin-left:20px">清除</a>
+            </label>
+          </span>
+        </fieldset>
+        <fieldset>
+          <span class="span3">
+            <label>用户类别</label>
+            <select name="userType">
+              <option value="">全部</option>
+              <option value="0" {{#equals userType "1"}}selected="selected"{{/equals}}>管理员</option>
+              <option value="1" {{#equals userType "2"}}selected="selected"{{/equals}}>普通用户</option>
+            </select>
+          </span>
+          <span class="span3">
+            <label>公司</label>
+            <input type="text" name="companyName" placeholder="请输入公司名称" value="{{companyName}}">
+          </span>
+        </fieldset>
+      </form>
+    </div>
+    <table class="users-template-table table table-horizontal center-text" data-domain="{{_HREF_.main}}">
+      <thead>
+        <tr>
+          <th width="22%">用户名</th>
+          <th width="10%">姓名</th>
+          <th width="10%">性别</th>
+          <th width="10%">用户类别</th>
+          <th width="17%">所属公司</th>
+          <th width="10%">状态</th>
+          <th width="20%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each _DATA_.data}}
+          <tr class="user" data-album="{{json this}}" data-id="{{id}}">
+            <td>
+              {{name}}
+            </td>
+            <td>
+              {{nick}}
+            </td>
+            <td>
+              {{#equals sex 0}}女{{/equals}}
+              {{#equals sex 1}}男{{/equals}}
+            </td>
+            <td>
+              {{#equals userType 1}}管理员{{/equals}}
+              {{#equals userType 2}}普通用户{{/equals}}
+            </td>
+            <td>
+              {{companyName}}
+            </td>
+            <td>
+              {{#equals status "-1"}}已冻结{{/equals}}
+              {{#equals status 0}}停用{{/equals}}
+              {{#equals status 1}}正常{{/equals}}
+            </td>
+            <td>
+              {{#equals status 0}}
+                <button data-id="{{id}}" class="btn btn-info top-five" data-toggle="confirm" data-title="您确定提交吗?" data-content="启用后用户可以登录" data-event="confirm:enable">启用</button><br>
+                <a href="/admin/adduser?id={{id}}" class="js-edit-coupon">修改</a>
+              {{/equals}}
+              {{#equals status 1}}
+                <button data-id="{{id}}" class="btn btn-small btn-info top-five" data-toggle="confirm" data-title="您确定停用吗?" data-content="停用后用户将无法登录" data-event="confirm:stop">停用</button>
+              {{/equals}}
+              <button data-id="{{id}}" class="btn btn-info top-five" data-toggle="confirm" data-title="您确定重置密码吗?" data-content="密码将被重置成123456" data-event="confirm:reset">重置密码</button>
+              <a href="/admin/adduser?id={{id}}&view=1">详情</a>
+            </td>
+            <td>{{idcStatus}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="album-pagination" data-total="{{_DATA_.total}}"></div>
+  </div>
+{{/component}}
