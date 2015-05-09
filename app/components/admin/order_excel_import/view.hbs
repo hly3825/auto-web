@@ -1,0 +1,104 @@
+{{#component "order-excel-import js-comp "}}
+  <p class="components-title"><strong>订单导入管理</strong>&nbsp;&nbsp;&nbsp;<span>共（{{#if _DATA_.total}}{{_DATA_.total}}{{else}}0{{/if}}）次导入</span></p>
+  <div class="tab tab-condensed" style="display: inline-block;">
+    <ul class="tab-navs clearfix" style="margin-bottom: 10px;">
+      <li class="active"><a href="/album/album-manage">订单导入管理</a></li>
+    </ul>
+    <div class="block">
+      <form id="form-search" class="form">
+        <fieldset>
+          <span class="span3">
+            <label>开始时间</label>
+            <input type="text" name="createByName" placeholder="请输入制作者" value="{{createByName}}">
+          </span>
+          <span class="span3">
+            <label>结束时间</label>
+            <input type="text" name="name" placeholder="请输入专辑名称" value="{{name}}">
+          </span>
+          <span class="span3">
+            <label>导入状态</label>
+            <select name="status">
+              <option value="">全部</option>
+              <option value="1" {{#equals status "1"}}selected="selected"{{/equals}}>导入中</option>
+              <option value="2" {{#equals status "2"}}selected="selected"{{/equals}}>导入成功</option>
+              <option value="-2" {{#equals status "-1"}}selected="selected"{{/equals}}>导入失败</option>
+            </select>
+          </span>
+          <span class="span1">
+            <label>
+              <input class="btn btn-success" type="submit" value="搜索">
+              <a href="/album/album-manage" style="margin-left:20px">清除</a>
+            </label>
+          </span>
+        </fieldset>
+        <fieldset>
+          <span class="span3">
+            <label>操作人</label>
+            <input type="text" name="createAt" placeholder="请输入创建时间" value="{{createAt}}">
+          </span>
+          <span class="span3">
+            <label>公司名称</label>
+            <input type="text" name="companyName" placeholder="请输入公司名称" value="{{companyName}}">
+          </span>
+        </fieldset>
+      </form>
+    </div>
+    <div style="margin-top: 10px;">
+      <div class="btn btn-upload btn-success">
+        <span>导入订单</span>
+        <input type="file" name="file" single>
+      </div>
+    </div>
+    <table class="album-template-table table table-horizontal center-text" data-domain="{{_HREF_.main}}">
+      <thead>
+        <tr>
+          <th width="6%">导入编号</th>
+          <th width="14%">导入开始时间</th>
+          <th width="14%">导入结束时间</th>
+          <th width="10%">导入状态</th>
+          <th width="10%">导入耗时</th>
+          <th width="15%">操作人</th>
+          <th width="11%">文件中订单数量</th>
+          <th width="11%">有效订单数量</th>
+          <th width="11%">新创建订单数量</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each _DATA_.data}}
+          <tr class="import" data-album="{{json this}}" data-id="{{id}}">
+            <td>
+              {{id}}
+            </td>
+            <td>
+              {{formatDate importBeginAt}}
+            </td>
+            <td>
+              {{formatDate importEndAt}}
+            </td>
+            <td>
+              {{#equals status 1}}导入中{{/equals}}
+              {{#equals status 2}}导入成功{{/equals}}
+              {{#equals status "-1"}}导入失败{{/equals}}
+            </td>
+            <td>
+              {{timeCost}}
+            </td>
+            <td>
+              {{createdByName}}
+            </td>
+            <td>
+              {{orderImportNum}}
+            </td>
+            <td>
+              {{orderActualImportNum}}
+            </td>
+            <td>
+              {{orderNewImportNum}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="excel-import-pagination" data-total="{{_DATA_.total}}"></div>
+  </div>
+{{/component}}
