@@ -9,11 +9,11 @@
         <fieldset>
           <span class="span3">
             <label>开始时间</label>
-            <input type="text" name="createByName" placeholder="请输入制作者" value="{{createByName}}">
+            <input class="datepicker" type="text" name="importBeginAt" placeholder="请输入开始时间" value="{{importBeginAt}}">
           </span>
           <span class="span3">
             <label>结束时间</label>
-            <input type="text" name="name" placeholder="请输入专辑名称" value="{{name}}">
+            <input class="datepicker" type="text" name="importEndAt" placeholder="请输入结束时间" value="{{importEndAt}}">
           </span>
           <span class="span3">
             <label>导入状态</label>
@@ -27,18 +27,14 @@
           <span class="span1">
             <label>
               <input class="btn btn-success" type="submit" value="搜索">
-              <a href="/album/album-manage" style="margin-left:20px">清除</a>
+              <a href="/admin/order-import" style="margin-left:20px">清除</a>
             </label>
           </span>
         </fieldset>
         <fieldset>
           <span class="span3">
             <label>操作人</label>
-            <input type="text" name="createAt" placeholder="请输入创建时间" value="{{createAt}}">
-          </span>
-          <span class="span3">
-            <label>公司名称</label>
-            <input type="text" name="companyName" placeholder="请输入公司名称" value="{{companyName}}">
+            <input type="text" name="createdByName" placeholder="请输入操作人" value="{{createdByName}}">
           </span>
         </fieldset>
       </form>

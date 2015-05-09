@@ -25,6 +25,12 @@ components:
     service: "auto-web:findUserById" # app:serviceKey
     desc: "管理员-创建用户" # 可选
 
+  "admin/order_excel_import": # component path
+    category: "OFFICIAL" # category: OFFICIAL, TEMPLATE, SHOP, ITEM, ITEM_TEMPLATE
+    name: "管理员-创建用户"
+    service: "auto-web:queryImportByParam" # app:serviceKey
+    desc: "管理员-创建用户" # 可选
+
 
 
   "admin/items": # component path

@@ -324,3 +324,7 @@ services:
   "findAllCompany":
     type: SPRING
     uri: "io.terminus.auto.user.service.CompanyReaderService:findAllCompany"
+
+  "queryImportByParam":
+    type: SPRING
+    uri: "io.terminus.auto.order.service.OrderImportOperationReadService:queryByParam"
