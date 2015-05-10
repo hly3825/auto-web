@@ -328,3 +328,11 @@ services:
   "queryImportByParam":
     type: SPRING
     uri: "io.terminus.auto.order.service.OrderImportOperationReadService:queryByParam"
+
+  "queryItemCommissionRankingByParam":
+    type: SPRING
+    uri: "io.terminus.auto.album.service.ReportService:queryItemCommissionRankingByParam"
+
+  "queryAlbumCommissionRankingByParam":
+    type: SPRING
+    uri: "io.terminus.auto.album.service.ReportService:queryAlbumCommissionRankingByParam"

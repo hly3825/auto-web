@@ -1,0 +1,101 @@
+{{#component "item-rank js-comp "}}
+  <p class="components-title"><strong>商品佣金排行</strong>&nbsp;&nbsp;&nbsp;<span>共（{{#if _DATA_.total}}{{_DATA_.total}}{{else}}0{{/if}}）条数据</span></p>
+  <div class="tab tab-condensed" style="display: inline-block;">
+    <ul class="tab-navs clearfix" style="margin-bottom: 10px;">
+      <li class="active"><a href="/report/item-rank">销售商品</a></li>
+    </ul>
+    <div class="block">
+      <form id="form-search" class="form">
+        <fieldset>
+          <span class="span3">
+            <label>专辑名称</label>
+            <input type="text" name="albumName" placeholder="请输入专辑名称" value="{{albumName}}">
+          </span>
+          <span class="span3">
+            <label>商品名称</label>
+            <input type="text" name="name" placeholder="请输入商品名称" value="{{name}}">
+          </span>
+          <span class="span1">
+            <label>
+              <input class="btn btn-success" type="submit" value="搜索">
+              <a href="/report/item-rank" style="margin-left:20px">清除</a>
+            </label>
+          </span>
+        </fieldset>
+      </form>
+    </div>
+    <table class="album-template-table table table-horizontal center-text" data-domain="{{_HREF_.main}}">
+      <thead>
+        <tr>
+          <th width="6%">商品系统ID</th>
+          <th width="6%">商品淘宝ID</th>
+          <th width="14%">商品名称</th>
+          <th width="10%">专辑名称</th>
+          <th width="6%">单价</th>
+          <th width="6%">佣金率</th>
+          <th width="6%">
+            佣金
+            <select class="select sort-select">
+              <option value="" {{#equals sort ""}}selected{{/equals}}>默认</option>
+              <option value="asc" {{#equals sort "asc"}}selected{{/equals}}>正序</option>
+              <option value="desc" {{#equals sort "desc"}}selected{{/equals}}>倒序</option>
+            </select>
+          </th>
+          <th width="6%">创建订单</th>
+          <th width="6%">付款订单</th>
+          <th width="6%">结算订单</th>
+          <th width="10%">累计结算佣金</th>
+          <th width="10%">累计付款佣金</th>
+          <th width="20%">排期时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each _DATA_.data}}
+          <tr class="import" data-album="{{json this}}" data-id="{{id}}">
+            <td>
+              {{itemId}}
+            </td>
+            <td>
+              {{taobaoId}}
+            </td>
+            <td>
+              {{name}}
+            </td>
+            <td>
+              {{albumName}}
+            </td>
+            <td>
+              {{formatPrice price}}
+            </td>
+            <td>
+              {{formatPrice commissionRate}}%
+            </td>
+            <td>
+              {{formatPrice commissionPrice}}
+            </td>
+
+            <td>
+              {{orderCreateQuantity}}
+            </td>
+            <td>
+              {{orderPaidQuantity}}
+            </td>
+            <td>
+              {{orderSettlementQuantity}}
+            </td>
+            <td>
+              {{formatPrice commissionTotal}}
+            </td>
+            <td>
+              {{formatPrice paidTotal}}
+            </td>
+            <td>
+              {{scheduling}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="item-rank-pagination" data-total="{{_DATA_.total}}"></div>
+  </div>
+{{/component}}
