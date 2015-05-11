@@ -11,7 +11,8 @@ class AlbumRank
   init: ->
 
   sortSearch: ->
-    sort = $(".sort-select").val()
-    window.location.search = $.query.remove("sort").set("sort", sort)
+    sort = $(@).val()
+    field = $(@).data "field"
+    window.location.search = $.query.remove("sort").set("sort", sort).remove("field").set("field", field)
 
 module.exports = AlbumRank

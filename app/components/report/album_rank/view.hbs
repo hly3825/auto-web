@@ -32,17 +32,52 @@
           <th width="12%">公司名称</th>
           <th width="10%">
             佣金总量
-            <select class="select sort-select">
-              <option value="" {{#equals sort ""}}selected{{/equals}}>默认</option>
-              <option value="asc" {{#equals sort "asc"}}selected{{/equals}}>正序</option>
-              <option value="desc" {{#equals sort "desc"}}selected{{/equals}}>倒序</option>
+            <select class="select sort-select" data-field="commission_price">
+              <option value=""{{#equals field "commission_price"}} {{#equals sort ""}}selected{{/equals}}{{/equals}}>默认</option>
+              <option value="asc" {{#equals field "commission_price"}}{{#equals sort "asc"}}selected{{/equals}}{{/equals}}>正序</option>
+              <option value="desc" {{#equals field "commission_price"}}{{#equals sort "desc"}}selected{{/equals}}{{/equals}}>倒序</option>
             </select>
           </th>
-          <th width="10%">创建订单</th>
-          <th width="10%">付款订单</th>
-          <th width="10%">结算订单</th>
-          <th width="10%">结算佣金</th>
-          <th width="10%">付款佣金</th>
+          <th width="10%">
+            创建订单
+            <select class="select sort-select" data-field="order_create_quantity">
+              <option value="" {{#equals field "order_create_quantity"}}{{#equals sort ""}}selected{{/equals}}{{/equals}}>默认</option>
+              <option value="asc" {{#equals field "order_create_quantity"}}{{#equals sort "asc"}}selected{{/equals}}{{/equals}}>正序</option>
+              <option value="desc" {{#equals field "order_create_quantity"}}{{#equals sort "desc"}}selected{{/equals}}{{/equals}}>倒序</option>
+            </select>
+          </th>
+          <th width="10%">
+            付款订单
+            <select class="select sort-select" data-field="order_paid_quantity">
+              <option value="" {{#equals field "order_paid_quantity"}} {{#equals sort ""}}selected{{/equals}}{{/equals}}>默认</option>
+              <option value="asc" {{#equals field "order_paid_quantity"}} {{#equals sort "asc"}}selected{{/equals}}{{/equals}}>正序</option>
+              <option value="desc" {{#equals field "order_paid_quantity"}} {{#equals sort "desc"}}selected{{/equals}}{{/equals}}>倒序</option>
+            </select>
+          </th>
+          <th width="10%">
+            结算订单
+            <select class="select sort-select" data-field="order_settlement_quantity">
+              <option value="" {{#equals field "order_settlement_quantity"}} {{#equals sort ""}}selected{{/equals}}{{/equals}}>默认</option>
+              <option value="asc" {{#equals field "order_settlement_quantity"}} {{#equals sort "asc"}}selected{{/equals}}{{/equals}}>正序</option>
+              <option value="desc" {{#equals field "order_settlement_quantity"}} {{#equals sort "desc"}}selected{{/equals}}{{/equals}}>倒序</option>
+            </select>
+          </th>
+          <th width="10%">
+            结算佣金
+            <select class="select sort-select" data-field="commission_total">
+              <option value="" {{#equals field "commission_total"}} {{#equals sort ""}}selected{{/equals}}{{/equals}}>默认</option>
+              <option value="asc" {{#equals field "commission_total"}} {{#equals sort "asc"}}selected{{/equals}}{{/equals}}>正序</option>
+              <option value="desc" {{#equals field "commission_total"}} {{#equals sort "desc"}}selected{{/equals}}{{/equals}}>倒序</option>
+            </select>
+          </th>
+          <th width="10%">
+            付款佣金
+            <select class="select sort-select" data-field="paid_total">
+              <option value="" {{#equals field "paid_total"}} {{#equals sort ""}}selected{{/equals}}{{/equals}}>默认</option>
+              <option value="asc" {{#equals field "paid_total"}} {{#equals sort "asc"}}selected{{/equals}}{{/equals}}>正序</option>
+              <option value="desc" {{#equals field "paid_total"}} {{#equals sort "desc"}}selected{{/equals}}{{/equals}}>倒序</option>
+            </select>
+          </th>
           <th width="20%">排期时间</th>
           <th width="6%">操作</th>
         </tr>
